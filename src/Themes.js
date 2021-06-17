@@ -1,6 +1,6 @@
-export const LightTheme = {
-    mainBackground:""
-}
-export const DarkTheme = {
-    mainBackground:""
+export const lightTheme = {
+	mainBackground: '#f2f2f2',
+};
+export const darkTheme = {
+    mainBackground:"#000000"
 }

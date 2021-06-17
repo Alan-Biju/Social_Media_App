@@ -6,6 +6,7 @@ import { RiHome2Line, RiAddLine } from 'react-icons/ri';
 import { BsPerson } from 'react-icons/bs';
 import { IoIosLogOut } from 'react-icons/io';
 import { useAuth } from '../../Context/AuthProvider';
+import ToggleButton from './ToggleButton';
 const NavBar = () => {
 	const { signOut } = useAuth();
 	return (
@@ -15,9 +16,9 @@ const NavBar = () => {
 			</LogoIcon>
 			<Header>
 				<IconGroup>
-					<Icon exact to='/' activeClassName='active'>
-						<RiHome2Line />
-					</Icon>
+					<SideIcon >
+						<ToggleButton/>
+					</SideIcon>
 					<Icon exact to='/' activeClassName='active'>
 						<RiHome2Line />
 					</Icon>
@@ -27,9 +28,9 @@ const NavBar = () => {
 					<Icon exact to='/Profile' activeClassName='active'>
 						<BsPerson />
 					</Icon>
-					<Icon exact to='/Login' onClick={async () => await signOut()}>
+					<SideIcon  onClick={async () => await signOut()}>
 						<IoIosLogOut />
-					</Icon>
+					</SideIcon>
 				</IconGroup>
 			</Header>
 			<Avatar>
@@ -81,6 +82,20 @@ const IconGroup = styled.div`
 	align-items: center;
 	justify-content: space-around;
 `;
+const SideIcon = styled.div`
+	font-size: 1.2rem;
+	color: #a19d9d;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 35px;
+	height: 35px;
+	transition: color 0.5s ease;
+	cursor: pointer;
+	&:hover {
+		color: #1a1919;
+	}
+`;
 const Icon = styled(NavLink)`
 	text-decoration: none;
 	font-size: 1.2rem;
@@ -92,6 +107,9 @@ const Icon = styled(NavLink)`
 	height: 35px;
 	transition: color 0.5s ease;
 	position: relative;
+	&:hover {
+		color: #1a1919;
+	}
 	&.active {
 		color: #1a1919;
 		&::after {

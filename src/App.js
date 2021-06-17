@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, lazy, Suspense } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
 import storage from 'local-storage-fallback';
@@ -6,39 +6,38 @@ import ProtectedRoute from './ProtectedRoute';
 import Login from './Components/Login/Login';
 import Register from './Components/Register/Register';
 import Reset from './Components/Reset/Reset';
-import { LightTheme, DarkTheme } from './Themes';
-import Home from './Components/Home.js/Home';
-import Error404 from './Reusable/Error404';
+import {lightTheme, darkTheme } from './Themes';
+import { useData } from './Context/DataProvider';
+const Home = lazy(() => import('./Components/Home/Home'));
+const Error404 = lazy(() => import('./Reusable/Error404'));
 const App = () => {
-
-	const InintialTheme = () => {
-		const Theme = storage.getItem('Theme');
-		return Theme === 'true' ? true : false;
-	};
-	const [isDarkMode /* setIsDarkMode */] = useState(InintialTheme());
+	const { isDarkMode } = useData();
+	console.log(isDarkMode);
 	useEffect(() => {
 		storage.setItem('Theme', isDarkMode);
 	}, [isDarkMode]);
 	return (
-		<ThemeProvider theme={isDarkMode ? DarkTheme : LightTheme}>
+		<ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
 			<AppContainer>
-				<Switch>
-					<Route exact path='/Login'>
-						<Login />
-					</Route>
-					<Route exact path='/SignUp'>
-						<Register />
-					</Route>
-					<Route exact path='/Reset'>
-						<Reset />
-					</Route>
-					<ProtectedRoute exact path='/' Component={Home} />
-					<ProtectedRoute exact path='/AddPost' Component={Login} />
-					<ProtectedRoute exact path='/Profile' Component={Login} />
-					<Route path='*'>
-						<Error404/>
-					</Route>
-				</Switch>
+				<Suspense fallback={<h1>Loading......</h1>}>
+					<Switch>
+						<Route exact path='/Login'>
+							<Login />
+						</Route>
+						<Route exact path='/SignUp'>
+							<Register />
+						</Route>
+						<Route exact path='/Reset'>
+							<Reset />
+						</Route>
+						<ProtectedRoute exact path='/' Component={Home} />
+						<ProtectedRoute exact path='/AddPost' Component={Error404} />
+						<ProtectedRoute exact path='/Profile' Component={Login} />
+						<Route path='*'>
+							<Error404 />
+						</Route>
+					</Switch>
+				</Suspense>
 			</AppContainer>
 		</ThemeProvider>
 	);
@@ -47,7 +46,6 @@ const App = () => {
 export default App;
 const AppContainer = styled.div`
 	width: 100%;
-	height: 100vh;
-	background-color: #f2f2f2;
+	height: calc(100vh - 60px);
+	background-color: ${(prop) => prop.theme.mainBackground};
 `;
-

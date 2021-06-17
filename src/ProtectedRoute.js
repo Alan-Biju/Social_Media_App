@@ -4,7 +4,6 @@ import NavBar from './Components/NavBar.js/NavBar';
 import { useAuth } from './Context/AuthProvider';
 const ProtectedRoute = ({ Component, ...rest }) => {
 	const { Auth } = useAuth();
-	console.log(Auth);
 	return (
 		<Route
 			{...rest}
