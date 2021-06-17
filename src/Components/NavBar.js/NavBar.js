@@ -59,7 +59,7 @@ const Avatar = styled.div`
 	}
 `;
 const Header = styled.header`
-	width: 100vw;
+	width: 100%;
 	height: 60px;
 	display: flex;
 	align-items: center;
@@ -67,13 +67,14 @@ const Header = styled.header`
 	background: #ffffff;
 	box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 	@media (max-width: 450px) {
-		position: absolute;
+		position: fixed;
 		bottom: 0;
 		left: 0;
 	}
 `;
 const IconGroup = styled.div`
 	width: 100%;
+    height: 100%;
 	max-width: 350px;
 	min-width: 240px;
 	display: flex;

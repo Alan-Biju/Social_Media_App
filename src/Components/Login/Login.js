@@ -59,7 +59,7 @@ export default function Login () {
 }
 export const LoginContainer = styled.div`
 	min-width: 100%;
-	min-height: 100vh;
+	min-height: 100%;
 	background-color: #f2f2f2;
 	display: flex;
 	align-items: center;
