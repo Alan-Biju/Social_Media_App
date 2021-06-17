@@ -74,7 +74,7 @@ const Header = styled.header`
 `;
 const IconGroup = styled.div`
 	width: 100%;
-	max-width: 320px;
+	max-width: 350px;
 	min-width: 240px;
 	display: flex;
 	align-items: center;
