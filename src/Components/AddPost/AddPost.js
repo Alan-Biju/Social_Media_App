@@ -34,6 +34,7 @@ const AddPostContainer = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
+    padding: 10px;
 `;
 const AddPostBox = styled.form`
 	width: 100%;
@@ -113,7 +114,8 @@ const DropFile = styled.div`
 		}
 	}
     input{
-       
+       display: none;
+       pointer-events: none;
     }
 `;
 const Add = styled(VscAdd)`
