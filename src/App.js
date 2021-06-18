@@ -9,10 +9,10 @@ import {lightTheme, darkTheme } from './Themes';
 import { useData } from './Context/DataProvider';
 const Home = lazy(() => import('./Components/Home/Home'));
 const Error404 = lazy(() => import('./Reusable/Error404'));
-const Reset =lazy(()=>import('./Components/Reset/Reset'))
+const Reset = lazy(() => import('./Components/Reset/Reset'))
+const AddPost =lazy(()=>import('./Components/AddPost/AddPost'))
 const App = () => {
 	const { isDarkMode } = useData();
-	console.log(isDarkMode);
 	useEffect(() => {
 		storage.setItem('Theme', isDarkMode);
 	}, [isDarkMode]);
@@ -31,7 +31,7 @@ const App = () => {
 							<Reset />
 						</Route>
 						<ProtectedRoute exact path='/' Component={Home} />
-						<ProtectedRoute exact path='/AddPost' Component={Error404} />
+						<ProtectedRoute exact path='/AddPost' Component={AddPost} />
 						<ProtectedRoute exact path='/Profile' Component={Login} />
 						<Route path='*'>
 							<Error404 />

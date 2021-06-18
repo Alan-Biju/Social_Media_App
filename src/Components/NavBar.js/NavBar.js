@@ -11,17 +11,15 @@ const NavBar = () => {
 	const { signOut } = useAuth();
 	return (
 		<>
-			<SideIcons>
-				<LogoIcon>
-					<NavBarIcon />
-				</LogoIcon>
-				<Avatar>
-					<img
-						src='https://pfpmaker.com/_nuxt/img/profile-3-1.3e702c5.png'
-						alt='Profile Pic'
-					/>
-				</Avatar>
-			</SideIcons>
+			<LogoIcon>
+				<NavBarIcon />
+			</LogoIcon>
+			<Avatar>
+				<img
+					src='https://pfpmaker.com/_nuxt/img/profile-3-1.3e702c5.png'
+					alt='Profile Pic'
+				/>
+			</Avatar>
 			<Header>
 				<IconGroup>
 					<SideIcon>
@@ -46,15 +44,6 @@ const NavBar = () => {
 };
 
 export default NavBar;
-const SideIcons = styled.div`
-	width: 100%;
-	height: 60px;
-	position: absolute;
-	@media (max-width: 450px) {
-		position: static;
-	
-	}
-`;
 const LogoIcon = styled.div`
 	position: fixed;
 	top: 10px;
@@ -69,10 +58,8 @@ const Avatar = styled.div`
 		height: 35px;
 		border-radius: 50%;
 	}
-
 `;
 const Header = styled.header`
-
 	width: 100%;
 	height: 60px;
 	display: flex;

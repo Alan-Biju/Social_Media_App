@@ -5,19 +5,15 @@ import { useAuth } from './Context/AuthProvider';
 const ProtectedRoute = ({ Component, ...rest }) => {
 	const { Auth } = useAuth();
 	return (
-		<Route
-			{...rest}
-			render={() => {
-				return Auth ? (
-					<>
-						<NavBar />
-						<Component />
-					</>
-				) : (
-					<Redirect to='/Login' />
-				);
-			}}
-		/>
+		<>
+			<NavBar />
+			<Route
+				{...rest}
+				render={() => {
+					return Auth ? <Component /> : <Redirect to='/Login' />;
+				}}
+			/>
+		</>
 	);
 };
 
