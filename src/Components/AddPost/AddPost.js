@@ -1,7 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { VscAdd } from 'react-icons/vsc';
+import { FaRegWindowClose } from 'react-icons/fa';
 const AddPost = () => {
+	const [image, setImage] = useState(null);
+	console.log(image);
+	const removeImage = () => {
+		const box = document.getElementById('imagePreviewBox');
+		box.style.display = 'none';
+	};
+	const handleChange = (e) => {
+		if (e.target.files[0]) {
+			setImage(e.target.files[0]);
+			const src1 = URL.createObjectURL(e.target.files[0]);
+			const preview1 = document.getElementById('imagePreview');
+			const box = document.getElementById('imagePreviewBox');
+			preview1.src = src1;
+			box.style.display = 'flex';
+		}
+	};
 	return (
 		<>
 			<AddPostContainer>
@@ -14,13 +31,25 @@ const AddPost = () => {
 						<textarea name='description' placeholder='Description' required />
 					</InputField>
 					<DropFile>
-						<label htmlFor='file'>
+						<label htmlFor='fileInput'>
 							<div>
 								<Add />
+								<p>Add photo Here</p>
 							</div>
 						</label>
-						<input type='file' id='file' />
+						<input
+							type='file'
+							id='fileInput'
+							onChange={handleChange}
+						/>
 					</DropFile>
+					<ImagePerview id='imagePreviewBox'>
+						<img id='imagePreview' alt='' />
+						<p>
+							{image && image.name.split('.')[0]}{' '}
+							<Close onClick={() => removeImage()} />
+						</p>
+					</ImagePerview>
 				</AddPostBox>
 			</AddPostContainer>
 		</>
@@ -34,11 +63,11 @@ const AddPostContainer = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-    padding: 10px;
+	padding: 10px;
 `;
 const AddPostBox = styled.form`
 	width: 100%;
-	max-width: 450px;
+	max-width: 400px;
 	min-width: 230px;
 	height: 500px;
 	background-color: #ffffff;
@@ -109,14 +138,25 @@ const DropFile = styled.div`
 		div {
 			width: 100%;
 			height: 150px;
-			background-color: #ebebeb;
-            position: relative;
+			background-color: #f5f4f4;
+			position: relative;
+		}
+		p {
+			letter-spacing: 1px;
+			font-size: 1rem;
+			color: #b8b0b0;
+			position: absolute;
+			bottom: 0;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			font-family: 'Raleway', sans-serif;
+			text-transform: capitalize;
 		}
 	}
-    input{
-       display: none;
-       pointer-events: none;
-    }
+	input {
+		display: none;
+		pointer-events: none;
+	}
 `;
 const Add = styled(VscAdd)`
 	font-size: 3rem;
@@ -125,4 +165,30 @@ const Add = styled(VscAdd)`
 	left: 50%;
 	transform: translate(-50%, -50%);
 	color: #3aa9cb;
+`;
+const ImagePerview = styled.div`
+	width: 100%;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px 20px;
+	background-color: #ffffff;
+	img {
+		width: 120px;
+        border-radius: 10px;
+	}
+	p {
+		font-size: 0.9rem;
+		text-transform: capitalize;
+		font-weight: 500;
+		font-family: 'Manrope', sans-serif;
+        letter-spacing: 1px;
+        display: flex;
+        align-items: center;
+        color: #414141;
+	}
+`;
+const Close = styled(FaRegWindowClose)`
+	margin-left:10px;
+	font-size: 1.3rem;
+	color: #504d4d;
 `;
