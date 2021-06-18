@@ -11,13 +11,21 @@ const NavBar = () => {
 	const { signOut } = useAuth();
 	return (
 		<>
-			<LogoIcon>
-				<NavBarIcon />
-			</LogoIcon>
+			<SideIcons>
+				<LogoIcon>
+					<NavBarIcon />
+				</LogoIcon>
+				<Avatar>
+					<img
+						src='https://pfpmaker.com/_nuxt/img/profile-3-1.3e702c5.png'
+						alt='Profile Pic'
+					/>
+				</Avatar>
+			</SideIcons>
 			<Header>
 				<IconGroup>
-					<SideIcon >
-						<ToggleButton/>
+					<SideIcon>
+						<ToggleButton />
 					</SideIcon>
 					<Icon exact to='/' activeClassName='active'>
 						<RiHome2Line />
@@ -28,22 +36,25 @@ const NavBar = () => {
 					<Icon exact to='/Profile' activeClassName='active'>
 						<BsPerson />
 					</Icon>
-					<SideIcon  onClick={async () => await signOut()}>
+					<SideIcon onClick={async () => await signOut()}>
 						<IoIosLogOut />
 					</SideIcon>
 				</IconGroup>
 			</Header>
-			<Avatar>
-				<img
-					src='https://pfpmaker.com/_nuxt/img/profile-3-1.3e702c5.png'
-					alt='Profile Pic'
-				/>
-			</Avatar>
 		</>
 	);
 };
 
 export default NavBar;
+const SideIcons = styled.div`
+	width: 100%;
+	height: 60px;
+	position: absolute;
+	@media (max-width: 450px) {
+		position: static;
+	
+	}
+`;
 const LogoIcon = styled.div`
 	position: fixed;
 	top: 10px;
@@ -58,8 +69,10 @@ const Avatar = styled.div`
 		height: 35px;
 		border-radius: 50%;
 	}
+
 `;
 const Header = styled.header`
+
 	width: 100%;
 	height: 60px;
 	display: flex;
@@ -67,6 +80,8 @@ const Header = styled.header`
 	justify-content: center;
 	background: #ffffff;
 	box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+	z-index: 9;
+	user-select: none;
 	@media (max-width: 450px) {
 		position: fixed;
 		bottom: 0;
@@ -75,7 +90,7 @@ const Header = styled.header`
 `;
 const IconGroup = styled.div`
 	width: 100%;
-    height: 100%;
+	height: 100%;
 	max-width: 350px;
 	min-width: 240px;
 	display: flex;

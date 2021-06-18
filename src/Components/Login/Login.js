@@ -64,7 +64,7 @@ export const LoginContainer = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background-image: url('back1.svg');
+	background-image: url('image/back1.svg');
 	background-repeat: no-repeat;
 	background-size: contain;
 	
@@ -96,7 +96,7 @@ export const TitleContainer = styled.div`
 	padding: 35px;
 	display: flex;
 	align-items: center;
-	background-image: url('back.svg');
+	background-image: url('image/back.svg');
 	background-repeat: no-repeat;
 	background-size: 150% 100%;
 `;

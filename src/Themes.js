@@ -2,5 +2,5 @@ export const lightTheme = {
 	mainBackground: '#f2f2f2',
 };
 export const darkTheme = {
-    mainBackground:"#000000"
-}
+	mainBackground: '#161616',
+};
