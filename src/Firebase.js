@@ -1,6 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
+import 'firebase/storage';
  var firebaseConfig = {
 		apiKey: 'AIzaSyAAKwNecjpRVGNBMERj2IJHufB511NpN2U',
 		authDomain: 'social-media-app-12e7f.firebaseapp.com',
@@ -12,6 +13,7 @@ import 'firebase/firestore';
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 export const auth = firebase.auth();
+export const storage = firebase.storage();
 const db = firebase.firestore();
 
 export default db;

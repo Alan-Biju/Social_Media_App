@@ -47,7 +47,8 @@ const NavBar = () => {
 
 export default NavBar;
 const LogoIcon = styled.div`
-margin: 2px 10px;
+	margin: 2px 10px;
+	user-select: none;
 `;
 const Avatar = styled(LogoIcon)`
 	img {
@@ -106,6 +107,7 @@ const Icon = styled(NavLink)`
 	height: 35px;
 	transition: color 0.5s ease;
 	position: relative;
+	user-select: none;
 	&:hover {
 		color: #1a1919;
 	}

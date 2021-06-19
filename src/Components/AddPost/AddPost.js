@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { VscAdd } from 'react-icons/vsc';
 import { FaRegWindowClose } from 'react-icons/fa';
+import { MdDone } from 'react-icons/md';
 const AddPost = () => {
 	const [image, setImage] = useState(null);
 	const removeImage = () => {
@@ -24,6 +25,9 @@ const AddPost = () => {
 				<AddPostBox>
 					<Heading>
 						<p>Add New Post</p>
+						<button>
+							Post <MdDone size={18} style={{ color: ' #3aa9cb' }} />
+						</button>
 					</Heading>
 					<InputField>
 						<input type='text' name='caption' placeholder='Caption' required />
@@ -40,10 +44,10 @@ const AddPost = () => {
 					</DropFile>
 					<ImagePerview id='imagePreviewBox'>
 						<img id='imagePreview' alt='' />
-						<p>
-							{image && image.name.split('.')[0]}
+						<div>
+							<p>{image && image.name.split('.')[0]}</p>
 							<Close onClick={() => removeImage()} />
-						</p>
+						</div>
 					</ImagePerview>
 				</AddPostBox>
 			</AddPostContainer>
@@ -72,17 +76,39 @@ const AddPostBox = styled.form`
 	padding: 10px;
 	font-family: 'Manrope', sans-serif;
 	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    border-radius:8px ;
+	border-radius: 8px;
 `;
 const Heading = styled.div`
 	width: 100%;
 	height: 50px;
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 	p {
 		font-weight: 500;
 		font-size: 1.4rem;
 		letter-spacing: 1px;
+	}
+	button {
+		width: 80px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 6px 10px;
+		font-size: 0.9rem;
+		letter-spacing: 1px;
+		border: 1px solid #e2e2e2;
+		background: #ffffff;
+		cursor: pointer;
+		transition-duration: 0.5s;
+		border-radius: 5px;
+		font-family: 'Raleway', sans-serif;
+		&:hover {
+			background: #e2e2e2;
+		}
+		@media (max-width: 600px) {
+			margin: 0;
+		}
 	}
 `;
 const InputField = styled.div`
@@ -150,7 +176,7 @@ const DropFile = styled.div`
 			transform: translate(-50%, -50%);
 			font-family: 'Raleway', sans-serif;
 			text-transform: capitalize;
-            white-space: nowrap;
+			white-space: nowrap;
 		}
 	}
 	input {
@@ -175,6 +201,12 @@ const ImagePerview = styled.div`
 	img {
 		width: 120px;
 		border-radius: 10px;
+		max-height: 140px;
+	}
+	div {
+		display: flex;
+		align-items: center;
+		color: #414141;
 	}
 	p {
 		font-size: 0.8rem;
@@ -182,9 +214,8 @@ const ImagePerview = styled.div`
 		font-weight: 500;
 		font-family: 'Manrope', sans-serif;
 		letter-spacing: 1px;
-		display: flex;
-		align-items: center;
-		color: #414141;
+		max-width: 100px;
+		overflow: hidden;
 	}
 `;
 const Close = styled(FaRegWindowClose)`
