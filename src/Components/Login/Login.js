@@ -9,11 +9,11 @@ export default function Login () {
 	const [password, setPassword] = useState('');
 	const [message, setMessage] = useState('');
 	const { login } = useAuth();
-	const loginHandler = async (e) => {
+	const loginHandler =  (e) => {
 		e.preventDefault();
 		try {
             setMessage('');
-			await login(email, password);
+			 login(email, password);
 			setEmail('');
 			setPassword('');
 			history.push('/')

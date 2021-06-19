@@ -4,7 +4,6 @@ import { VscAdd } from 'react-icons/vsc';
 import { FaRegWindowClose } from 'react-icons/fa';
 const AddPost = () => {
 	const [image, setImage] = useState(null);
-	console.log(image);
 	const removeImage = () => {
 		const box = document.getElementById('imagePreviewBox');
 		box.style.display = 'none';
@@ -34,19 +33,15 @@ const AddPost = () => {
 						<label htmlFor='fileInput'>
 							<div>
 								<Add />
-								<p>Add photo Here</p>
+								<p>Add photos/Gifs Here</p>
 							</div>
 						</label>
-						<input
-							type='file'
-							id='fileInput'
-							onChange={handleChange}
-						/>
+						<input type='file' id='fileInput' onChange={handleChange} />
 					</DropFile>
 					<ImagePerview id='imagePreviewBox'>
 						<img id='imagePreview' alt='' />
 						<p>
-							{image && image.name.split('.')[0]}{' '}
+							{image && image.name.split('.')[0]}
 							<Close onClick={() => removeImage()} />
 						</p>
 					</ImagePerview>
@@ -59,11 +54,14 @@ const AddPost = () => {
 export default AddPost;
 const AddPostContainer = styled.div`
 	width: 100%;
-	height: calc(100% - 60px);
+	height: calc(100% - 50px);
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	padding: 10px;
+	@media (max-width: 450px) {
+		height: calc(100% - 100px);
+	}
 `;
 const AddPostBox = styled.form`
 	width: 100%;
@@ -74,6 +72,7 @@ const AddPostBox = styled.form`
 	padding: 10px;
 	font-family: 'Manrope', sans-serif;
 	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius:8px ;
 `;
 const Heading = styled.div`
 	width: 100%;
@@ -137,13 +136,13 @@ const DropFile = styled.div`
 	label {
 		div {
 			width: 100%;
-			height: 150px;
+			height: 120px;
 			background-color: #f5f4f4;
 			position: relative;
 		}
 		p {
 			letter-spacing: 1px;
-			font-size: 1rem;
+			font-size: 0.8rem;
 			color: #b8b0b0;
 			position: absolute;
 			bottom: 0;
@@ -151,6 +150,7 @@ const DropFile = styled.div`
 			transform: translate(-50%, -50%);
 			font-family: 'Raleway', sans-serif;
 			text-transform: capitalize;
+            white-space: nowrap;
 		}
 	}
 	input {
@@ -167,28 +167,29 @@ const Add = styled(VscAdd)`
 	color: #3aa9cb;
 `;
 const ImagePerview = styled.div`
+	display: none;
 	width: 100%;
 	align-items: center;
 	justify-content: space-between;
 	padding: 10px 20px;
-	background-color: #ffffff;
 	img {
 		width: 120px;
-        border-radius: 10px;
+		border-radius: 10px;
 	}
 	p {
-		font-size: 0.9rem;
+		font-size: 0.8rem;
 		text-transform: capitalize;
 		font-weight: 500;
 		font-family: 'Manrope', sans-serif;
-        letter-spacing: 1px;
-        display: flex;
-        align-items: center;
-        color: #414141;
+		letter-spacing: 1px;
+		display: flex;
+		align-items: center;
+		color: #414141;
 	}
 `;
 const Close = styled(FaRegWindowClose)`
-	margin-left:10px;
+	margin-left: 10px;
 	font-size: 1.3rem;
 	color: #504d4d;
+	cursor: pointer;
 `;

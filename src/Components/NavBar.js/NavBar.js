@@ -11,15 +11,17 @@ const NavBar = () => {
 	const { signOut } = useAuth();
 	return (
 		<>
-			<LogoIcon>
-				<NavBarIcon />
-			</LogoIcon>
-			<Avatar>
-				<img
-					src='https://pfpmaker.com/_nuxt/img/profile-3-1.3e702c5.png'
-					alt='Profile Pic'
-				/>
-			</Avatar>
+			<SideIcons>
+				<LogoIcon>
+					<NavBarIcon />
+				</LogoIcon>
+				<Avatar>
+					<img
+						src='https://pfpmaker.com/_nuxt/img/profile-3-1.3e702c5.png'
+						alt='Profile Pic'
+					/>
+				</Avatar>
+			</SideIcons>
 			<Header>
 				<IconGroup>
 					<SideIcon>
@@ -45,23 +47,31 @@ const NavBar = () => {
 
 export default NavBar;
 const LogoIcon = styled.div`
-	position: fixed;
-	top: 10px;
-	left: 10px;
+margin: 2px 10px;
 `;
-const Avatar = styled.div`
-	position: fixed;
-	top: 10px;
-	right: 10px;
+const Avatar = styled(LogoIcon)`
 	img {
 		width: 35px;
 		height: 35px;
 		border-radius: 50%;
 	}
 `;
+const SideIcons = styled.div`
+	width: 100%;
+	height: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	position: absolute;
+	top:0;
+	background-color: white;
+	@media (max-width: 450px) {
+		position: static;
+	}
+`;
 const Header = styled.header`
 	width: 100%;
-	height: 60px;
+	height: 50px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -84,20 +94,7 @@ const IconGroup = styled.div`
 	align-items: center;
 	justify-content: space-around;
 `;
-const SideIcon = styled.div`
-	font-size: 1.2rem;
-	color: #a19d9d;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 35px;
-	height: 35px;
-	transition: color 0.5s ease;
-	cursor: pointer;
-	&:hover {
-		color: #1a1919;
-	}
-`;
+
 const Icon = styled(NavLink)`
 	text-decoration: none;
 	font-size: 1.2rem;
@@ -125,5 +122,20 @@ const Icon = styled(NavLink)`
 			left: 50%;
 			transform: translate(-50%, -50%);
 		}
+	}
+`;
+const SideIcon = styled.div`
+	font-size: 1.2rem;
+	color: #a19d9d;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 35px;
+	height: 35px;
+	transition: color 0.5s ease;
+	cursor: pointer;
+	z-index: 99;
+	&:hover {
+		color: #1a1919;
 	}
 `;

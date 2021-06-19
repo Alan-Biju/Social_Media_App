@@ -10,7 +10,7 @@ const AuthProvider = ({ children }) => {
 
 	///-------------------------------------Login function---------------------------------
 	const login = (email, password) => {
-		return auth.signInWithEmailAndPassword(email, password);
+		return  auth.signInWithEmailAndPassword(email, password);
 	};
 	///---------------------------------Register function------------------------------------
 	const register =async (email, password, name) => {
