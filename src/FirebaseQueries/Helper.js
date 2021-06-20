@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 import { useAuth } from '../Context/AuthProvider';
 import db from '../Firebase';
 import { storage } from '../Firebase';
 const Helper = () => {
-    const history = useHistory();
+    // const history = useHistory();
 	const { Auth } = useAuth();
 	const [progress, setProgress] = useState('');
 
