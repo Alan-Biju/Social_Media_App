@@ -1,14 +1,16 @@
-import React, { useState, useRef} from 'react';
-import styled from 'styled-components';
+import React, { useState, useRef } from 'react';
+import styled, { keyframes } from 'styled-components';
 import { VscAdd } from 'react-icons/vsc';
 import { FaRegWindowClose } from 'react-icons/fa';
 import { MdDone } from 'react-icons/md';
+import { RiLoader5Fill, RiArrowRightSLine } from 'react-icons/ri';
+
 import Helper from '../../FirebaseQueries/Helper';
 const AddPost = () => {
 	const [image, setImage] = useState(null);
 	const Caption = useRef();
 	const Description = useRef();
-	const { postUpload,progress } = Helper();
+	const { postUpload, progress } = Helper();
 
 	const removeImage = () => {
 		const box = document.getElementById('imagePreviewBox');
@@ -27,7 +29,8 @@ const AddPost = () => {
 	};
 	const addPostHandler = async (e) => {
 		e.preventDefault();
-	image && postUpload(Caption.current.value, Description.current.value, image);
+		image &&
+			postUpload(Caption.current.value, Description.current.value, image);
 	};
 
 	return (
@@ -35,9 +38,18 @@ const AddPost = () => {
 			<AddPostContainer>
 				<AddPostBox onSubmit={addPostHandler} progress={progress}>
 					<Heading>
-						<p>Add New Post {progress}</p>
+						<p>Add New Post </p>
 						<button type='submit'>
-							Post <MdDone size={18} style={{ color: ' #3aa9cb' }} />
+							Post
+							{progress ? (
+								progress === 100 ? (
+									<MdDone size={18} style={{ color: ' #3aa9cb' }} />
+								) : (
+									<Loading size={18} style={{ color: ' #3aa9cb' }} />
+								)
+							) : (
+								<RiArrowRightSLine size={18} style={{ color: ' #3aa9cb' }} />
+							)}
 						</button>
 					</Heading>
 					<InputField>
@@ -84,6 +96,18 @@ const AddPost = () => {
 };
 
 export default AddPost;
+const Spin = keyframes`
+from{
+    transform:rotate(0deg);
+}to{
+    transform:rotate(360deg);
+}
+
+`;
+const Loading = styled(RiLoader5Fill)`
+	animation: 0.8s ${Spin} forwards infinite;
+`;
+
 const AddPostContainer = styled.div`
 	width: 100%;
 	height: calc(100% - 50px);
@@ -220,8 +244,8 @@ const DropFile = styled.div`
 			white-space: nowrap;
 		}
 	}
-	input {
-		display: none;
+	input[type='file'] {
+		opacity: 0;
 		pointer-events: none;
 	}
 `;
@@ -242,7 +266,7 @@ const ImagePerview = styled.div`
 	img {
 		width: 120px;
 		border-radius: 10px;
-		max-height: 140px;
+		max-height: 130px;
 	}
 	div {
 		display: flex;

@@ -47,6 +47,6 @@ export default App;
 const AppContainer = styled.div`
 	width: 100%;
 	height: 100vh;
-	transition:background 0.5s ease;
-	background: ${(prop) => prop.theme.mainBackground};
+	transition:background-color 0.5s ease;
+	background-color: ${(prop) => prop.theme.mainBackground};
 `;

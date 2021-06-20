@@ -43,7 +43,7 @@ const Helper = () => {
 									image: url,
                                 }).then(() => {
                                     //----------------push history--------
-                                    history.push('/');
+                                    // history.push('/');
                                 });
 						});
 				},
