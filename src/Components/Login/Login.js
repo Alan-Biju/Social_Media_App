@@ -1,24 +1,25 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Link ,useHistory} from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../Context/AuthProvider';
 import Input from '../../Reusable/Input';
-export default function Login () {
+export default function Login() {
 	const history = useHistory();
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [message, setMessage] = useState('');
 	const { login } = useAuth();
-	const loginHandler =  (e) => {
+	const loginHandler = async (e) => {
 		e.preventDefault();
 		try {
-            setMessage('');
-			 login(email, password);
+			setMessage('');
+			await login(email, password);
 			setEmail('');
 			setPassword('');
-			history.push('/')
+			history.push('/');
 		} catch (e) {
 			setMessage(() => e.message);
+			console.log(e.message);
 		}
 	};
 	return (
@@ -67,7 +68,6 @@ export const LoginContainer = styled.div`
 	background-image: url('image/back1.svg');
 	background-repeat: no-repeat;
 	background-size: contain;
-	
 `;
 export const Message = styled.p`
 	width: 100%;
@@ -81,7 +81,7 @@ export const Message = styled.p`
 `;
 export const Form = styled.form`
 	max-width: 330px;
-	padding:5px;
+	padding: 5px;
 	min-width: 240px;
 	width: 100%;
 	height: 500px;
@@ -124,11 +124,11 @@ export const LinkTag = styled(Link)`
 `;
 export const LinkTagSignUp = styled(LinkTag)`
 	text-align: center;
-      padding:10px;
-      span{
-            color:black;
-            font-weight:600;
-      }
+	padding: 10px;
+	span {
+		color: black;
+		font-weight: 600;
+	}
 `;
 export const ButtonConatiner = styled.div`
 	width: 100%;

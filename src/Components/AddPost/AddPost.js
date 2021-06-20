@@ -1,13 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useRef} from 'react';
 import styled from 'styled-components';
 import { VscAdd } from 'react-icons/vsc';
 import { FaRegWindowClose } from 'react-icons/fa';
 import { MdDone } from 'react-icons/md';
+import Helper from '../../FirebaseQueries/Helper';
 const AddPost = () => {
 	const [image, setImage] = useState(null);
+	const Caption = useRef();
+	const Description = useRef();
+	const { postUpload,progress } = Helper();
+
 	const removeImage = () => {
 		const box = document.getElementById('imagePreviewBox');
 		box.style.display = 'none';
+		setImage(null);
 	};
 	const handleChange = (e) => {
 		if (e.target.files[0]) {
@@ -19,19 +25,35 @@ const AddPost = () => {
 			box.style.display = 'flex';
 		}
 	};
+	const addPostHandler = async (e) => {
+		e.preventDefault();
+	image && postUpload(Caption.current.value, Description.current.value, image);
+	};
+
 	return (
 		<>
 			<AddPostContainer>
-				<AddPostBox>
+				<AddPostBox onSubmit={addPostHandler} progress={progress}>
 					<Heading>
-						<p>Add New Post</p>
-						<button>
+						<p>Add New Post {progress}</p>
+						<button type='submit'>
 							Post <MdDone size={18} style={{ color: ' #3aa9cb' }} />
 						</button>
 					</Heading>
 					<InputField>
-						<input type='text' name='caption' placeholder='Caption' required />
-						<textarea name='description' placeholder='Description' required />
+						<input
+							ref={Caption}
+							type='text'
+							name='caption'
+							placeholder='Caption'
+							required
+						/>
+						<textarea
+							ref={Description}
+							name='description'
+							placeholder='Description'
+							required
+						/>
 					</InputField>
 					<DropFile>
 						<label htmlFor='fileInput'>
@@ -40,7 +62,13 @@ const AddPost = () => {
 								<p>Add photos/Gifs Here</p>
 							</div>
 						</label>
-						<input type='file' id='fileInput' onChange={handleChange} />
+						<input
+							type='file'
+							id='fileInput'
+							onChange={handleChange}
+							name='image'
+							required
+						/>
 					</DropFile>
 					<ImagePerview id='imagePreviewBox'>
 						<img id='imagePreview' alt='' />
@@ -77,6 +105,18 @@ const AddPostBox = styled.form`
 	font-family: 'Manrope', sans-serif;
 	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 	border-radius: 8px;
+	position: relative;
+	&::after {
+		transition: all 0.5s ease;
+		content: '';
+		width: ${(prop) => (prop.progress ? prop.progress : '0')}%;
+		border-radius: 8px;
+		height: 4px;
+		background-color: #66de93;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
 `;
 const Heading = styled.div`
 	width: 100%;
@@ -88,6 +128,7 @@ const Heading = styled.div`
 		font-weight: 500;
 		font-size: 1.4rem;
 		letter-spacing: 1px;
+		white-space: nowrap;
 	}
 	button {
 		width: 80px;
