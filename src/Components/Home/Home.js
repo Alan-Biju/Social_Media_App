@@ -5,7 +5,9 @@ const Home = () => {
     return (
         <>
             <HomeContainer>
-                sd
+                <HomePostContainer>
+dfg
+                </HomePostContainer>
            </HomeContainer>
         </>
     )
@@ -16,7 +18,16 @@ const HomeContainer = styled.div`
 	background-color: red;
 	width: 100%;
 	height: calc(100% - 50px);
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 5px;
 	@media (max-width: 450px) {
 		height: calc(100% - 100px);
 	}
+`;
+const HomePostContainer = styled.div`
+width: 70vw;
+background-color: aqua;
+
 `;

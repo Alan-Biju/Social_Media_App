@@ -1,10 +1,8 @@
 import { useState } from 'react';
-// import { useHistory } from 'react-router-dom';
 import { useAuth } from '../Context/AuthProvider';
 import db from '../Firebase';
 import { storage } from '../Firebase';
 const Helper = () => {
-    // const history = useHistory();
 	const { Auth } = useAuth();
 	const [progress, setProgress] = useState('');
 
@@ -41,10 +39,9 @@ const Helper = () => {
 									caption: caption,
 									description: description,
 									image: url,
-                                }).then(() => {
-                                    //----------------push history--------
-                                    // history.push('/');
+                                    Datetime: new Date(),
                                 });
+                            
 						});
 				},
 			);

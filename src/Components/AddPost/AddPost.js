@@ -28,9 +28,9 @@ const AddPost = () => {
 		}
 	};
 	const addPostHandler = async (e) => {
-		e.preventDefault();
+        e.preventDefault();
 		image &&
-			postUpload(Caption.current.value, Description.current.value, image);
+            postUpload(Caption.current.value, Description.current.value, image);
 	};
 
 	return (
@@ -39,7 +39,7 @@ const AddPost = () => {
 				<AddPostBox onSubmit={addPostHandler} progress={progress}>
 					<Heading>
 						<p>Add New Post </p>
-						<button type='submit'>
+						<button type='submit' disabled={progress}>
 							Post
 							{progress ? (
 								progress === 100 ? (
@@ -210,7 +210,6 @@ const InputField = styled.div`
 		font-size: 17px;
 		outline: none;
 		font-family: 'Raleway', sans-serif;
-		text-transform: capitalize;
 		border-radius: 5px;
 		border: 1px solid #e2e2e2;
 		&::placeholder {

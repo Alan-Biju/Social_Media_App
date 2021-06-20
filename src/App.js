@@ -5,12 +5,13 @@ import storage from 'local-storage-fallback';
 import ProtectedRoute from './ProtectedRoute';
 import Login from './Components/Login/Login';
 import Register from './Components/Register/Register';
-import {lightTheme, darkTheme } from './Themes';
+import { lightTheme, darkTheme } from './Themes';
 import { useData } from './Context/DataProvider';
+import LoadingIcon from './Reusable/LoadingIcon';
 const Home = lazy(() => import('./Components/Home/Home'));
 const Error404 = lazy(() => import('./Reusable/Error404'));
-const Reset = lazy(() => import('./Components/Reset/Reset'))
-const AddPost =lazy(()=>import('./Components/AddPost/AddPost'))
+const Reset = lazy(() => import('./Components/Reset/Reset'));
+const AddPost = lazy(() => import('./Components/AddPost/AddPost'));
 const App = () => {
 	const { isDarkMode } = useData();
 	useEffect(() => {
@@ -19,7 +20,7 @@ const App = () => {
 	return (
 		<ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
 			<AppContainer>
-				<Suspense fallback={<h1>Loading......</h1>}>
+				<Suspense fallback={<LoadingIcon />}>
 					<Switch>
 						<Route exact path='/Login'>
 							<Login />
@@ -32,7 +33,7 @@ const App = () => {
 						</Route>
 						<ProtectedRoute exact path='/' Component={Home} />
 						<ProtectedRoute exact path='/AddPost' Component={AddPost} />
-						<ProtectedRoute exact path='/Profile' Component={Login} />
+						<ProtectedRoute exact path='/Profile' Component={LoadingIcon} />
 						<Route path='*'>
 							<Error404 />
 						</Route>
@@ -47,6 +48,6 @@ export default App;
 const AppContainer = styled.div`
 	width: 100%;
 	height: 100vh;
-	transition:background-color 0.5s ease;
+	transition: background-color 0.5s ease;
 	background-color: ${(prop) => prop.theme.mainBackground};
 `;
