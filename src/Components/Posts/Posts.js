@@ -6,43 +6,42 @@ import { FaRegComment } from 'react-icons/fa';
 const Posts = ({ Data, Loading }) => {
 	return (
 		<>
+			<PostContainer>
+				<Heading>
+					<Avatar>
+						<img
+							src='https://pfpmaker.com/_nuxt/img/profile-3-1.3e702c5.png'
+							alt='Profile Pic'
+						/>
+						<p>
+							{Data && Data.name} <span> . {Data.location}</span>
+						</p>
+					</Avatar>
 
-				<PostContainer>
-					<Heading>
-						<Avatar>
-							<img
-								src='https://pfpmaker.com/_nuxt/img/profile-3-1.3e702c5.png'
-								alt='Profile Pic'
-							/>
-							<p>
-								{Data && Data.name} <span> . bhadravthi</span>{' '}
-							</p>
-						</Avatar>
-
-						<DateTime>20 may 2021</DateTime>
-					</Heading>
-					<ImageContainer>
-						<img src={Data.image} alt='post' />
-					</ImageContainer>
-					<IconSection>
-						<IconLeft>
-							<Heart />
-							<FaRegComment />
-						</IconLeft>
-						<IconRight>
-							<FiBookmark />
-						</IconRight>
-					</IconSection>
-					<TextSection>
-						<h1>
-							<span>
-								<FiHash />
-							</span>
-							{Data && Data.caption}
-						</h1>
-						<p>more...</p>
-					</TextSection>
-				</PostContainer>
+                    <DateTime>{Data && Data.name }</DateTime>
+				</Heading>
+				<ImageContainer>
+					<img src={Data.image} alt='post' />
+				</ImageContainer>
+				<IconSection>
+					<IconLeft>
+						<Heart />
+						<FaRegComment />
+					</IconLeft>
+					<IconRight>
+						<FiBookmark />
+					</IconRight>
+				</IconSection>
+				<TextSection>
+					<h1>
+						<span>
+							<FiHash />
+						</span>
+						{Data && Data.caption}
+					</h1>
+					<p>more...</p>
+				</TextSection>
+			</PostContainer>
 		</>
 	);
 };
@@ -97,7 +96,7 @@ const ImageContainer = styled.div`
 	img {
 		width: 100%;
 		height: 420px;
-		object-fit: cover;
+		object-fit:cover;
 	}
 `;
 const IconSection = styled.div`

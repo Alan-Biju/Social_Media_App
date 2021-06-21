@@ -12,7 +12,7 @@ const Helper = () => {
 	///-------------------------------------------------postUpload-------------
 	const postUpload = async (caption, description, location, file) => {
 		try {
-			const Ref = storage.ref(`posts/${file.name}`).put(file);
+			const Ref = storage.ref(`posts/${Auth.uid}/${file.name}`).put(file);
 			Ref.on(
 				'state_changed',
 				(snapshot) => {
@@ -29,7 +29,7 @@ const Helper = () => {
 				},
 				async () => {
 					await storage
-						.ref(`posts`)
+						.ref(`posts/${Auth.uid}`)
 						.child(`${file.name}`)
 						.getDownloadURL()
 						.then(async (url) => {
@@ -65,6 +65,9 @@ const Helper = () => {
 					const Arr = [];
 					res.forEach((post) => {
 						Arr.push({ ...post.data(), id: post.id });
+					});
+					Arr.sort((a, b) => {
+						return b.Datetime - a.Datetime;
 					});
 
 					setPosts(Arr);
