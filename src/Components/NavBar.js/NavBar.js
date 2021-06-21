@@ -64,10 +64,12 @@ const SideIcons = styled.div`
 	align-items: center;
 	justify-content: space-between;
 	position: absolute;
-	top:0;
+	top: 0;
 	background-color: white;
 	@media (max-width: 450px) {
 		position: static;
+		position: sticky;
+		top: 0;
 	}
 `;
 const Header = styled.header`

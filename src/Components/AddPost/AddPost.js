@@ -10,6 +10,7 @@ const AddPost = () => {
 	const [image, setImage] = useState(null);
 	const Caption = useRef();
 	const Description = useRef();
+	const Location = useRef();
 	const { postUpload, progress } = Helper();
 
 	const removeImage = () => {
@@ -28,9 +29,14 @@ const AddPost = () => {
 		}
 	};
 	const addPostHandler = async (e) => {
-        e.preventDefault();
+		e.preventDefault();
 		image &&
-            postUpload(Caption.current.value, Description.current.value, image);
+			postUpload(
+				Caption.current.value,
+				Description.current.value,
+				Location.current.value,
+				image,
+			);
 	};
 
 	return (
@@ -59,6 +65,12 @@ const AddPost = () => {
 							name='caption'
 							placeholder='Caption'
 							required
+						/>
+						<input
+							ref={Location}
+							type='text'
+							name='Location'
+							placeholder='Location'
 						/>
 						<textarea
 							ref={Description}
@@ -181,7 +193,7 @@ const InputField = styled.div`
 	align-items: flex-start;
 	flex-direction: column;
 	justify-content: space-around;
-	height: 150px;
+	height: 170px;
 	input {
 		width: 100%;
 	}
@@ -205,7 +217,7 @@ const InputField = styled.div`
 	textarea {
 		resize: none;
 		width: 100%;
-		height: 80px;
+		height: 60px;
 		padding: 8px;
 		font-size: 17px;
 		outline: none;
@@ -263,9 +275,9 @@ const ImagePerview = styled.div`
 	justify-content: space-between;
 	padding: 10px 20px;
 	img {
-		width: 120px;
-		border-radius: 10px;
-		max-height: 130px;
+		width: 100px;
+		border-radius: 8px;
+		max-height: 110px;
 	}
 	div {
 		display: flex;
