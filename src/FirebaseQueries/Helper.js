@@ -8,7 +8,6 @@ const Helper = () => {
 	const { Auth } = useAuth();
 	const [progress, setProgress] = useState('');
 	const [posts, setPosts] = useState('');
-	const [isLoading, setisLoading] = useState(true);
 
 	///-------------------------------------------------postUpload-------------
 	const postUpload = async (caption, description, location, file) => {
@@ -69,9 +68,6 @@ const Helper = () => {
 					});
 
 					setPosts(Arr);
-					setInterval(() => {
-						setisLoading(false);
-					}, 600);
 				});
 		} catch (e) {
 			console.log(e);
@@ -79,7 +75,7 @@ const Helper = () => {
 	};
 
 	///------------------------------------return values
-	return { postUpload, progress, AllPost, posts, isLoading };
+	return { postUpload, progress, AllPost, posts };
 };
 
 export default Helper;

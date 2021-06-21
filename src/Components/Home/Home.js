@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { lazy, useEffect } from 'react';
 import styled from 'styled-components';
 import Helper from '../../FirebaseQueries/Helper';
-import Posts from '../Posts/Posts';
+const Posts = lazy(() => import('../Posts/Posts'));
 const Home = () => {
-	const { AllPost, posts, isLoading } = Helper();
+	const { AllPost, posts} = Helper();
 	useEffect(() => {
 		AllPost();
 
@@ -12,19 +12,20 @@ const Home = () => {
 	}, []);
 	return (
 		<>
-			<HomeContainer>
-				<HomePostContainer>
-					{posts && posts.length > 0 ? (
-						posts.map((post) => {
-							return <Posts key={post.id} Data={post} Loading={isLoading} />;
-						})
-					) : (
-						<BackHome>
-							<img src='/Image/BackHome.svg' alt='mT' />
-						</BackHome>
-					)}
-				</HomePostContainer>
-			</HomeContainer>
+				<HomeContainer>
+					<HomePostContainer>
+						{posts && posts.length > 0 ? (
+							posts.map((post) => {
+								return <Posts key={post.id} Data={post}  />;
+							})
+						) : (
+							<BackHome>
+								<img src='/Image/BackHome.svg' alt='mT' />
+							</BackHome>
+						)}
+					</HomePostContainer>
+				</HomeContainer>
+			
 		</>
 	);
 };

@@ -1,13 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import StyledContentLoader from 'styled-content-loader';
 import { FiHeart, FiBookmark, FiHash } from 'react-icons/fi';
 import { FaRegComment } from 'react-icons/fa';
 
 const Posts = ({ Data, Loading }) => {
 	return (
 		<>
-			<StyledContentLoader isLoading={Loading}>
+
 				<PostContainer>
 					<Heading>
 						<Avatar>
@@ -44,7 +43,6 @@ const Posts = ({ Data, Loading }) => {
 						<p>more...</p>
 					</TextSection>
 				</PostContainer>
-			</StyledContentLoader>
 		</>
 	);
 };
