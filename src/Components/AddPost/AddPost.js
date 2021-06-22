@@ -120,7 +120,9 @@ const Loading = styled(RiLoader5Fill)`
 	animation: 0.8s ${Spin} forwards infinite;
 `;
 
-const AddPostContainer = styled(HomeContainer)``;
+const AddPostContainer = styled(HomeContainer)`
+justify-content: center;
+`;
 const AddPostBox = styled.form`
 	width: 100%;
 	max-width: 400px;
