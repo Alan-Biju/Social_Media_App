@@ -12,6 +12,7 @@ const Home = lazy(() => import('./Components/Home/Home'));
 const Error404 = lazy(() => import('./Reusable/Error404'));
 const Reset = lazy(() => import('./Components/Reset/Reset'));
 const AddPost = lazy(() => import('./Components/AddPost/AddPost'));
+const Profile=lazy(()=>import('./Components/Profile/Profile') )
 const App = () => {
 	const { isDarkMode } = useData();
 	useEffect(() => {
@@ -33,7 +34,7 @@ const App = () => {
 						</Route>
 						<ProtectedRoute exact path='/' Component={Home} />
 						<ProtectedRoute exact path='/AddPost' Component={AddPost} />
-						<ProtectedRoute exact path='/Profile' Component={LoadingIcon} />
+						<ProtectedRoute exact path='/Profile' Component={Profile} />
 						<Route path='*'>
 							<Error404 />
 						</Route>

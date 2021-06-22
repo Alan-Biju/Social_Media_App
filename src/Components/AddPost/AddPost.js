@@ -4,7 +4,7 @@ import { VscAdd } from 'react-icons/vsc';
 import { FaRegWindowClose } from 'react-icons/fa';
 import { MdDone } from 'react-icons/md';
 import { RiLoader5Fill, RiArrowRightSLine } from 'react-icons/ri';
-
+import { HomeContainer } from '../Home/Home';
 import Helper from '../../FirebaseQueries/Helper';
 const AddPost = () => {
 	const [image, setImage] = useState(null);
@@ -120,17 +120,7 @@ const Loading = styled(RiLoader5Fill)`
 	animation: 0.8s ${Spin} forwards infinite;
 `;
 
-const AddPostContainer = styled.div`
-	width: 100%;
-	height: calc(100% - 50px);
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	padding: 10px;
-	@media (max-width: 450px) {
-		height: calc(100% - 100px);
-	}
-`;
+const AddPostContainer = styled(HomeContainer)``;
 const AddPostBox = styled.form`
 	width: 100%;
 	max-width: 400px;

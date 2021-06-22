@@ -1,37 +1,30 @@
-import React, { lazy, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Helper from '../../FirebaseQueries/Helper';
-const Posts = lazy(() => import('../Posts/Posts'));
+import Posts from '../Posts/Posts';
 const Home = () => {
-	const { AllPost, posts} = Helper();
-	useEffect(() => {
-		AllPost();
-
-		return AllPost();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+	const { posts } = Helper();
 	return (
 		<>
-				<HomeContainer>
-					<HomePostContainer>
-						{posts && posts.length > 0 ? (
-							posts.map((post) => {
-								return <Posts key={post.id} Data={post}  />;
-							})
-						) : (
-							<BackHome>
-								<img src='/Image/BackHome.svg' alt='mT' />
-							</BackHome>
-						)}
-					</HomePostContainer>
-				</HomeContainer>
-			
+			<HomeContainer>
+				<HomePostContainer>
+					{posts && posts.length > 0 ? (
+						posts.map((post) => {
+							return <Posts key={post.id} Data={post} />;
+						})
+					) : (
+						<BackHome>
+							<img src='/Image/BackHome.svg' alt='mT' />
+						</BackHome>
+					)}
+				</HomePostContainer>
+			</HomeContainer>
 		</>
 	);
 };
 
 export default Home;
-const HomeContainer = styled.div`
+export const HomeContainer = styled.div`
 	width: 100%;
 	height: calc(100% - 50px);
 	display: flex;

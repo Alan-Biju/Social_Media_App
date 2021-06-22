@@ -2,8 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import { FiHeart, FiBookmark, FiHash } from 'react-icons/fi';
 import { FaRegComment } from 'react-icons/fa';
-
-const Posts = ({ Data, Loading }) => {
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+const Posts = ({ Data }) => {
+	let t = new Date(1970, 0, 1);
+	t.setSeconds(Data.Datetime);
+	const day = t.toLocaleString('en-US', { day: '2-digit' });
+	const month = t.toLocaleString('en-US', { month: 'short' });
+	const year = `${Number(Data.Datetime * 0.0000000317)}`;
 	return (
 		<>
 			<PostContainer>
@@ -18,10 +24,10 @@ const Posts = ({ Data, Loading }) => {
 						</p>
 					</Avatar>
 
-                    <DateTime>{Data && Data.name }</DateTime>
+					<DateTime>{`${day}-${month}-${year.split('.')[0]}`}</DateTime>
 				</Heading>
 				<ImageContainer>
-					<img src={Data.image} alt='post' />
+					<LazyLoadImage src={Data.image} effect='blur' />
 				</ImageContainer>
 				<IconSection>
 					<IconLeft>
@@ -54,6 +60,7 @@ const PostContainer = styled.div`
 	height: 540px;
 	background-color: #ffffff;
 	margin: 0 auto;
+	border-radius: 5px;
 	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 `;
 const Heading = styled.div`
@@ -87,8 +94,9 @@ const Avatar = styled.div`
 `;
 const DateTime = styled.p`
 	font-family: 'Raleway', sans-serif;
-	font-size: 0.6rem;
+	font-size: 0.5rem;
 	font-weight: 500;
+	letter-spacing: 1px;
 `;
 const ImageContainer = styled.div`
 	width: 100%;
@@ -96,7 +104,7 @@ const ImageContainer = styled.div`
 	img {
 		width: 100%;
 		height: 420px;
-		object-fit:cover;
+		object-fit: cover;
 	}
 `;
 const IconSection = styled.div`

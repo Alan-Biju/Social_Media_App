@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useAuth } from '../Context/AuthProvider';
 import db from '../Firebase';
@@ -57,28 +57,28 @@ const Helper = () => {
 		}
 	};
 	///-----------------------------------------------------------All Post Fetch------------
-	const AllPost = () => {
-		try {
-			db.collectionGroup('posts')
-				.get()
-				.then((res) => {
-					const Arr = [];
-					res.forEach((post) => {
-						Arr.push({ ...post.data(), id: post.id });
-					});
-					Arr.sort((a, b) => {
-						return b.Datetime - a.Datetime;
-					});
-
-					setPosts(Arr);
+	useEffect(() => {
+		const unSubscribe = db
+			.collectionGroup('posts')
+			.onSnapshot((res) => {
+				const Arr = [];
+				res.forEach((post) => {
+					Arr.push({ ...post.data(), id: post.id });
 				});
-		} catch (e) {
-			console.log(e);
-		}
-	};
+				Arr.sort((a, b) => {
+					return b.Datetime - a.Datetime;
+				});
+
+				setPosts(Arr);
+			})
+
+		return () => {
+			unSubscribe();
+		};
+	}, []);
 
 	///------------------------------------return values
-	return { postUpload, progress, AllPost, posts };
+	return { postUpload, progress, posts };
 };
 
 export default Helper;
