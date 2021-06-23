@@ -5,7 +5,7 @@ import HelperStorage from '../../_FirebaseQueries/HelperStorage';
 import { useData } from '../../Context/DataProvider';
 import { RiLoader5Fill } from 'react-icons/ri';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/blur.css';
+import 'react-lazy-load-image-component/src/effects/black-and-white.css';
 const Avatar = () => {
 	const { photo } = useData();
 	const { profilePhoto, progress } = HelperStorage();
@@ -26,7 +26,7 @@ const Avatar = () => {
 			<Avatars>
 				<label htmlFor='Photo'>
 					<div>
-						<Img src={photo} alt='Profile Pic' effect='blur' />
+						<Img src={photo} alt='Profile Pic' effect='black-and-white' />
 						<Add>
 							{progress ? (
 								progress === 100 ? (
@@ -77,8 +77,8 @@ const Avatars = styled.div`
 	}
 
 	div {
-		width: 62px;
-		height: 62px;
+		width: 78px;
+		height: 78px;
 		background: linear-gradient(to right, #2193b0, #6dd5ed);
 		border-radius: 50%;
 		display: grid;
@@ -86,8 +86,8 @@ const Avatars = styled.div`
 		position: relative;
 		&::before {
 			content: '';
-			width: 58px;
-			height: 58px;
+			width: 74px;
+			height: 74px;
 			border-radius: 50%;
 			position: absolute;
 			background-color: #ffffff;
@@ -95,8 +95,8 @@ const Avatars = styled.div`
 	}
 `;
 const Img = styled(LazyLoadImage)`
-	width: 50px;
-	height: 50px;
+	width: 66px;
+	height: 66px;
 	border-radius: 50%;
 	z-index: 5;
 	object-fit: cover;

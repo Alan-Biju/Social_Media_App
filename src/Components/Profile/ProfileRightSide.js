@@ -31,8 +31,8 @@ const PostGridContainer = styled.div`
 	grid-gap: 15px;
 	grid-auto-flow: dense;
 	margin: 0 auto;
-	place-items: center;
 	@media (max-width: 500px) {
-		grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+		grid-gap: 5px;
 	}
 `;

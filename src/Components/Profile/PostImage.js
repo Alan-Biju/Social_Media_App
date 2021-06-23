@@ -16,7 +16,7 @@ const Img = styled(LazyLoadImage)`
 	height: 240px;
 	object-fit: cover;
 	@media (max-width: 500px) {
-		width: 100px;
-		height: 100px;
+		width: 95px;
+		height: 95px;
 	}
 `;

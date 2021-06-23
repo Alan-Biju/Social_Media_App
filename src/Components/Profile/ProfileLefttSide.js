@@ -42,7 +42,7 @@ const ProfileDetails = styled.div`
 
 const PostsDetails = styled.div`
 	margin: 0 auto;
-	width: 60%;
+	width: 80%;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;

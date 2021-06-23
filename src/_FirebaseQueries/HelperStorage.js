@@ -6,8 +6,8 @@ import db, { auth } from '../Firebase';
 import { storage } from '../Firebase';
 const HelperStorage = () => {
 	const history = useHistory();
-	const { setPhoto } = useData();
 	const { Auth } = useAuth();
+	const { setPhoto } = useData();
 	const [progress, setProgress] = useState('');
 	const [posts, setPosts] = useState('');
 
@@ -62,7 +62,7 @@ const HelperStorage = () => {
 
 	const profilePhoto = (file) => {
 		console.log('from file');
-		const Ref = storage.ref(`ProfilePhoto/${Auth.uid}/${file.name}`).put(file);
+		const Ref = storage.ref(`ProfilePhoto/${Auth.uid}/${Auth.displayName}`).put(file);
 		Ref.on(
 			'state_changed',
 			(snapshot) => {
@@ -78,7 +78,7 @@ const HelperStorage = () => {
 			async () => {
 				await storage
 					.ref(`ProfilePhoto/${Auth.uid}`)
-					.child(`${file.name}`)
+					.child(`${Auth.displayName}`)
 					.getDownloadURL()
 					.then(async (url) => {
 						const user = auth.currentUser;

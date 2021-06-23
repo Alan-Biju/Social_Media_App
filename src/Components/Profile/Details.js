@@ -28,7 +28,7 @@ export default Details;
 const DetailsContainer = styled.div`
 	padding: 20px 0;
 	margin: 0 auto;
-	width: 60%;
+	width: 80%;
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
@@ -58,18 +58,18 @@ const Info = styled.div`
 	font-family: 'Manrope', sans-serif;
 
 	h3 {
-		font-size: 0.9rem;
+		font-size: 1rem;
 		padding: 20px 0;
 	}
 	P {
-		font-size: 0.7rem;
+		font-size: 0.8rem;
 		font-weight: 500;
 		color: #6d6b6b;
 	}
 	a {
 		text-decoration: none;
 		color: #419bf0;
-		font-size: 0.7rem;
+		font-size: 0.8rem;
 		font-weight: 600;
 	}
 `;

@@ -2,7 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import Helper from '../_FirebaseQueries/HelperStorage';
 import Posts from '../Components/Home/Posts';
+import { useAuth } from '../Context/AuthProvider';
+import { useData } from '../Context/DataProvider';
 const Home = () => {
+	const { Auth } = useAuth();
+	const { setPhoto } = useData();
+	setPhoto(Auth.photoURL);
 	const { posts } = Helper();
 	return (
 		<>

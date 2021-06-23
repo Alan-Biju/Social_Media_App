@@ -9,8 +9,8 @@ import { useAuth } from '../../Context/AuthProvider';
 import ToggleButton from './ToggleButton';
 import { useData } from '../../Context/DataProvider';
 const NavBar = () => {
-	const { signOut } = useAuth();
 	const { photo } = useData();
+	const { signOut } = useAuth();
 	return (
 		<>
 			<SideIcons>
