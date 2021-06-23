@@ -7,7 +7,7 @@ export const useData = () => {
 };
 const DataProvider = ({ children }) => {
 	const { Auth } = useAuth();
-	const [photo, setPhoto] = useState(Auth.photoURL)
+	const [photo, setPhoto] = useState(Auth && Auth.photoURL)
     	const InintialTheme = () => {
 				const Theme = storage.getItem('Theme');
 				return Theme === 'true' ? true : false;

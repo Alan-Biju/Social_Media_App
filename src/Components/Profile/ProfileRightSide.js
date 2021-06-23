@@ -33,6 +33,6 @@ const PostGridContainer = styled.div`
 	margin: 0 auto;
 	place-items: center;
 	@media (max-width: 500px) {
-		grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
 	}
 `;
