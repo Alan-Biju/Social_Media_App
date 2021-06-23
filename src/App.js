@@ -3,16 +3,16 @@ import { Switch, Route } from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
 import storage from 'local-storage-fallback';
 import ProtectedRoute from './ProtectedRoute';
-import Login from './Components/Login/Login';
-import Register from './Components/Register/Register';
+import Login from './Pages/Login';
+import Register from './Pages/Register';
 import { lightTheme, darkTheme } from './Themes';
 import { useData } from './Context/DataProvider';
 import LoadingIcon from './Reusable/LoadingIcon';
-const Home = lazy(() => import('./Components/Home/Home'));
+const Home = lazy(() => import('./Pages/Home'));
 const Error404 = lazy(() => import('./Reusable/Error404'));
-const Reset = lazy(() => import('./Components/Reset/Reset'));
-const AddPost = lazy(() => import('./Components/AddPost/AddPost'));
-const Profile=lazy(()=>import('./Components/Profile/Profile') )
+const Reset = lazy(() => import('./Pages/Reset'));
+const AddPost = lazy(() => import('./Pages/AddPost'));
+const Profile=lazy(()=>import('./Pages/Profile') )
 const App = () => {
 	const { isDarkMode } = useData();
 	useEffect(() => {

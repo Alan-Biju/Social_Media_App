@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link, useHistory } from 'react-router-dom';
-import { useAuth } from '../../Context/AuthProvider';
-import Input from '../../Reusable/Input';
+import Input from '../Reusable/Input';
+import { useAuth } from '../Context/AuthProvider';
 export default function Login() {
 	const history = useHistory();
 	const [email, setEmail] = useState('');

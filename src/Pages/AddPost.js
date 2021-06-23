@@ -4,14 +4,14 @@ import { VscAdd } from 'react-icons/vsc';
 import { FaRegWindowClose } from 'react-icons/fa';
 import { MdDone } from 'react-icons/md';
 import { RiLoader5Fill, RiArrowRightSLine } from 'react-icons/ri';
-import { HomeContainer } from '../Home/Home';
-import Helper from '../../FirebaseQueries/Helper';
+import { HomeContainer } from './Home';
+import HelperStorage from '../_FirebaseQueries/HelperStorage';
 const AddPost = () => {
 	const [image, setImage] = useState(null);
 	const Caption = useRef();
 	const Description = useRef();
 	const Location = useRef();
-	const { postUpload, progress } = Helper();
+	const { postUpload, progress } = HelperStorage();
 
 	const removeImage = () => {
 		const box = document.getElementById('imagePreviewBox');

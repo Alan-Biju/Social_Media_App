@@ -7,8 +7,10 @@ import { BsPerson } from 'react-icons/bs';
 import { IoIosLogOut } from 'react-icons/io';
 import { useAuth } from '../../Context/AuthProvider';
 import ToggleButton from './ToggleButton';
+import { useData } from '../../Context/DataProvider';
 const NavBar = () => {
 	const { signOut } = useAuth();
+	const { photo } = useData();
 	return (
 		<>
 			<SideIcons>
@@ -16,10 +18,7 @@ const NavBar = () => {
 					<NavBarIcon />
 				</LogoIcon>
 				<Avatar>
-					<img
-						src='https://pfpmaker.com/_nuxt/img/profile-3-1.3e702c5.png'
-						alt='Profile Pic'
-					/>
+					<img src={photo} alt='Profile Pic' />
 				</Avatar>
 			</SideIcons>
 			<Header>
@@ -55,6 +54,7 @@ const Avatar = styled(LogoIcon)`
 		width: 35px;
 		height: 35px;
 		border-radius: 50%;
+		object-fit: cover;
 	}
 `;
 const SideIcons = styled.div`

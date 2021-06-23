@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import Helper from '../../FirebaseQueries/Helper';
-import Posts from '../Posts/Posts';
+import Helper from '../_FirebaseQueries/HelperStorage';
+import Posts from '../Components/Home/Posts';
 const Home = () => {
 	const { posts } = Helper();
 	return (

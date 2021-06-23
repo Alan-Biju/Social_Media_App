@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-import { useAuth } from '../../Context/AuthProvider';
-import Input from '../../Reusable/Input';
+import Input from '../Reusable/Input';
 import {
 	LoginContainer,
 	Form,
@@ -13,7 +12,8 @@ import {
 	InputContainer,
 	ButtonConatiner,
 	LinkTagSignUp,
-} from '../Login/Login';
+} from './Login';
+import { useAuth } from '../Context/AuthProvider';
 const Register = () => {
 	const history = useHistory();
 	const [email, setEmail] = useState('');

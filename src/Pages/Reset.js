@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Input from '../../Reusable/Input';
+import Input from '../Reusable/Input';
 import styled from 'styled-components';
 import { BsQuestionDiamond } from 'react-icons/bs';
 import {
@@ -12,8 +12,8 @@ import {
 	InputContainer,
 	ButtonConatiner,
 	LinkTagSignUp,
-} from '../Login/Login';
-import { useAuth } from '../../Context/AuthProvider';
+} from './Login';
+import { useAuth } from '../Context/AuthProvider';
 const Reset = () => {
 	const [email, setEmail] = useState('');
 	const [message, setMessage] = useState('');
