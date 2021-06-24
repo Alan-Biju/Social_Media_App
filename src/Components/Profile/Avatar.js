@@ -66,7 +66,7 @@ const Loading = styled(RiLoader5Fill)`
 `;
 const Avatars = styled.div`
 	width: 100%;
-	height: 130px;
+	height: 120px;
 	display: grid;
 	place-items: center;
 	label {
@@ -77,8 +77,8 @@ const Avatars = styled.div`
 	}
 
 	div {
-		width: 78px;
-		height: 78px;
+		width: 88px;
+		height: 88px;
 		background: linear-gradient(to right, #2193b0, #6dd5ed);
 		border-radius: 50%;
 		display: grid;
@@ -86,8 +86,8 @@ const Avatars = styled.div`
 		position: relative;
 		&::before {
 			content: '';
-			width: 74px;
-			height: 74px;
+			width: 84px;
+			height: 84px;
 			border-radius: 50%;
 			position: absolute;
 			background-color: #ffffff;
@@ -95,8 +95,8 @@ const Avatars = styled.div`
 	}
 `;
 const Img = styled(LazyLoadImage)`
-	width: 66px;
-	height: 66px;
+	width: 76px;
+	height: 76px;
 	border-radius: 50%;
 	z-index: 5;
 	object-fit: cover;
