@@ -23,12 +23,13 @@ export default Profile;
 const ProfileConatiner = styled(HomeContainer)``;
 const ProfileBox = styled.div`
 	width: 100%;
-	height: 100%;
+	min-height: 100%;
 	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-	background: aqua;
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 	@media (max-width: 500px) {
 		flex-direction: column;
+		overflow-y: scroll;
 	}
 `;

@@ -10,7 +10,8 @@ const HelperFirestore = () => {
 	//-------------------------------------------fetching post image for user------------------------------
 
 	useEffect(() => {
-		if (Auth) {
+		const unSubscribe =
+			Auth &&
 			db.collection(`users/${Auth.uid}/posts`).onSnapshot((res) => {
 				const Arr = [];
 				res.forEach((post) => {
@@ -21,7 +22,9 @@ const HelperFirestore = () => {
 				});
 				setPostImg(Arr);
 			});
-		}
+		return () => {
+			Auth && unSubscribe();
+		};
 	}, [Auth]);
 
 	///-----------------------------------------All Post Fetch--------------------------

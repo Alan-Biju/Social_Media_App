@@ -1,6 +1,6 @@
 import React from 'react';
 import NavBarIcon from './NavBarIcon';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { RiHome2Line, RiAddLine } from 'react-icons/ri';
 import { BsPerson } from 'react-icons/bs';
@@ -97,7 +97,17 @@ const IconGroup = styled.div`
 	align-items: center;
 	justify-content: space-around;
 `;
-
+const Pulse = keyframes`
+ 0% {
+    box-shadow: 0 0 0 0 #0a0a0a28;
+  }
+  70% {
+      box-shadow: 0 0 0 3px #05050529;
+  }
+  100% {
+      box-shadow: 0 0 0 0 #1d1c1c1d;
+  }
+`;
 const Icon = styled(NavLink)`
 	text-decoration: none;
 	font-size: 1.2rem;
@@ -122,9 +132,10 @@ const Icon = styled(NavLink)`
 			width: 5px;
 			height: 5px;
 			border-radius: 50%;
-			bottom: 0;
+			bottom: -2px;
 			left: 50%;
 			transform: translate(-50%, -50%);
+			animation: ${Pulse} 2s infinite;
 		}
 	}
 `;

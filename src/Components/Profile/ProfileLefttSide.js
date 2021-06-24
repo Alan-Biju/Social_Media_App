@@ -36,7 +36,7 @@ const ProfileDetails = styled.div`
 	height: 100%;
 	background: #ffffff;
 	@media (max-width: 500px) {
-		min-width:100%;
+		min-width: 100%;
 	}
 `;
 

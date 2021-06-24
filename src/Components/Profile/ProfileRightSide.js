@@ -19,10 +19,13 @@ const ProfileRightSide = ({ postImg }) => {
 
 export default ProfileRightSide;
 const PostsContainer = styled.div`
-	width: 100%;
+	width:100% ;
 	height: 100%;
 	background-color: #ffffff;
 	overflow-y: scroll;
+	@media (max-width: 500px) {
+		overflow-y: visible;
+	}
 `;
 const PostGridContainer = styled.div`
 	padding: 10px 20px;
