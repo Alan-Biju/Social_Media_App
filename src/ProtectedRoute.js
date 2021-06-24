@@ -6,7 +6,7 @@ const ProtectedRoute = ({ Component, ...rest }) => {
 	const { Auth } = useAuth();
 	return (
 		<>
-			<NavBar />
+			 <NavBar />
 			<Route
 				{...rest}
 				render={() => {

@@ -1,33 +1,51 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAuth } from '../Context/AuthProvider';
 import db from '../Firebase';
 
 const HelperFirestore = () => {
-    const { Auth } = useAuth();
-    const [postImg,setPostImg]=useState()
+	const { Auth } = useAuth();
+	const [postImg, setPostImg] = useState();
+	const [posts, setPosts] = useState('');
+
 	//-------------------------------------------fetching post image for user------------------------------
-	const postImages = async () => {
-		try {
-			await db
-				.collection(`users/${Auth.uid}/posts`)
-				.get()
-				.then((res) => {
-					const Arr = [];
-					res.forEach((post) => {
-						Arr.push({ ...post.data(), id: post.id });
-					});
-					Arr.sort((a, b) => {
-						return b.Datetime - a.Datetime;
-                    });
-                    setPostImg(Arr);
+
+	useEffect(() => {
+		if (Auth) {
+			db.collection(`users/${Auth.uid}/posts`).onSnapshot((res) => {
+				const Arr = [];
+				res.forEach((post) => {
+					Arr.push({ ...post.data(), id: post.id });
 				});
-		} catch (e) {
-			console.log(e);
+				Arr.sort((a, b) => {
+					return b.Datetime - a.Datetime;
+				});
+				setPostImg(Arr);
+			});
 		}
-	};
+	}, [Auth]);
+
+	///-----------------------------------------All Post Fetch--------------------------
+
+	useEffect(() => {
+		const unSubscribe = db.collectionGroup('posts').onSnapshot((res) => {
+			const Arr = [];
+			res.forEach((post) => {
+				Arr.push({ ...post.data(), id: post.id });
+			});
+			Arr.sort((a, b) => {
+				return b.Datetime - a.Datetime;
+			});
+
+			setPosts(Arr);
+		});
+
+		return () => {
+			unSubscribe();
+		};
+	}, []);
 	///------------------------------------------------------------
 
-	return { postImages, postImg };
+	return { postImg, posts };
 };
 
 export default HelperFirestore;

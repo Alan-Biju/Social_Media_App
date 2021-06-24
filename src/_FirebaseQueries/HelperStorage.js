@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 import { useHistory } from 'react-router-dom';
 import { useAuth } from '../Context/AuthProvider';
 import { useData } from '../Context/DataProvider';
@@ -9,8 +9,6 @@ const HelperStorage = () => {
 	const { Auth } = useAuth();
 	const { setPhoto } = useData();
 	const [progress, setProgress] = useState('');
-	const [posts, setPosts] = useState('');
-
 	///-------------------------------------------------postUpload-------------
 	const postUpload = async (caption, description, location, file) => {
 		try {
@@ -62,7 +60,9 @@ const HelperStorage = () => {
 
 	const profilePhoto = (file) => {
 		console.log('from file');
-		const Ref = storage.ref(`ProfilePhoto/${Auth.uid}/${Auth.displayName}`).put(file);
+		const Ref = storage
+			.ref(`ProfilePhoto/${Auth.uid}/${Auth.displayName}`)
+			.put(file);
 		Ref.on(
 			'state_changed',
 			(snapshot) => {
@@ -98,27 +98,8 @@ const HelperStorage = () => {
 		);
 	};
 
-	///-----------------------------------------------------------All Post Fetch------------
-	useEffect(() => {
-		const unSubscribe = db.collectionGroup('posts').onSnapshot((res) => {
-			const Arr = [];
-			res.forEach((post) => {
-				Arr.push({ ...post.data(), id: post.id });
-			});
-			Arr.sort((a, b) => {
-				return b.Datetime - a.Datetime;
-			});
-
-			setPosts(Arr);
-		});
-
-		return () => {
-			unSubscribe();
-		};
-	}, []);
-
 	///------------------------------------return values
-	return { postUpload, progress, posts, profilePhoto };
+	return { postUpload, progress, profilePhoto };
 };
 
 export default HelperStorage;

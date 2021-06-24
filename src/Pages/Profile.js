@@ -1,15 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import ProfileLeftSide from '../Components/Profile/ProfileLefttSide';
 import ProfileRightSide from '../Components/Profile/ProfileRightSide';
-import HelperFirestore from '../_FirebaseQueries/HelperFirestore';
+import { useData } from '../Context/DataProvider';
+
 import { HomeContainer } from './Home';
 const Profile = () => {
-	const { postImages, postImg } = HelperFirestore();
-	useEffect(() => {
-		postImages();
-	// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+	const { postImg } = useData();
 	return (
 		<>
 			<ProfileConatiner>
@@ -31,7 +28,7 @@ const ProfileBox = styled.div`
 	background: aqua;
 	display: flex;
 	align-items: center;
-	@media(max-width:500px){
+	@media (max-width: 500px) {
 		flex-direction: column;
 	}
 `;
