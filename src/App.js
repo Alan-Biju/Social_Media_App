@@ -8,12 +8,12 @@ import Register from './Pages/Register';
 import { lightTheme, darkTheme } from './Themes';
 import { useData } from './Context/DataProvider';
 import LoadingIcon from './Reusable/LoadingIcon';
-import Home from './Pages/Home';
-// const Home = lazy(() => import('./Pages/Home'));
+const Home = lazy(() => import('./Pages/Home'));
 const Error404 = lazy(() => import('./Reusable/Error404'));
 const Reset = lazy(() => import('./Pages/Reset'));
 const AddPost = lazy(() => import('./Pages/AddPost'));
-const Profile=lazy(()=>import('./Pages/Profile') )
+const Profile = lazy(() => import('./Pages/Profile'))
+const Settings=lazy(()=>import('./Pages/Settings'))
 const App = () => {
 	const { isDarkMode } = useData();
 	useEffect(() => {
@@ -36,6 +36,8 @@ const App = () => {
 						<ProtectedRoute exact path='/' Component={Home} />
 						<ProtectedRoute exact path='/AddPost' Component={AddPost} />
 						<ProtectedRoute exact path='/Profile' Component={Profile} />
+						<ProtectedRoute exact path='/Settings' Component={Settings} />
+
 						<Route path='*'>
 							<Error404 />
 						</Route>

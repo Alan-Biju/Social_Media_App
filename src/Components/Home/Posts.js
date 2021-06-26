@@ -27,7 +27,7 @@ const Posts = ({ Data }) => {
 					<DateTime>{`${day}-${month}-${year.split('.')[0]}`}</DateTime>
 				</Heading>
 				<ImageContainer>
-					<LazyLoadImage src={Data.image} effect='blur' threshold={200} />
+					<LazyLoadImage src={Data.image} effect='blur' threshold={200} alt='postPic'/>
 				</ImageContainer>
 				<IconSection>
 					<IconLeft>

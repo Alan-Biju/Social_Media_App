@@ -3,14 +3,14 @@ import styled from 'styled-components';
 import Avatar from './Avatar';
 import Details from './Details';
 
-const ProfileLeftSide = () => {
+const ProfileLeftSide = ({ Detail }) => {
 	return (
 		<>
 			<ProfileDetails>
 				<Avatar />
 				<PostsDetails>
 					<Item>
-						<h3>25</h3>
+						<h3>{Detail && Detail.length}</h3>
 						<p>Posts</p>
 					</Item>
 					<Item>
@@ -22,7 +22,7 @@ const ProfileLeftSide = () => {
 						<p>Posts</p>
 					</Item>
 				</PostsDetails>
-				<Details/>
+				<Details />
 			</ProfileDetails>
 		</>
 	);
@@ -46,7 +46,6 @@ const PostsDetails = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-
 `;
 const Item = styled.div`
 	font-family: 'Manrope', sans-serif;
@@ -62,4 +61,3 @@ const Item = styled.div`
 		letter-spacing: 1px;
 	}
 `;
-

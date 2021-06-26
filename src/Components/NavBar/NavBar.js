@@ -1,26 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import NavBarIcon from './NavBarIcon';
 import styled, { keyframes } from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { RiHome2Line, RiAddLine } from 'react-icons/ri';
-import { BsPerson } from 'react-icons/bs';
-import { IoIosLogOut } from 'react-icons/io';
-import { useAuth } from '../../Context/AuthProvider';
+import { BsPerson, BsCircle } from 'react-icons/bs';
+import { IoSettingsOutline } from 'react-icons/io5';
 import ToggleButton from './ToggleButton';
 import { useData } from '../../Context/DataProvider';
+import DropDown from './DropDown';
 const NavBar = () => {
+	const [drop, setDrop] = useState(false);
 	const { photo } = useData();
-	const { signOut } = useAuth();
 	return (
 		<>
 			<SideIcons>
-				<LogoIcon>
+				<LogoIcon to='/'>
 					<NavBarIcon />
 				</LogoIcon>
-				<Avatar>
+				<Avatar onClick={()=>setDrop(!drop)}>
+					<PhotoFrame />
 					<img src={photo} alt='Profile Pic' />
 				</Avatar>
 			</SideIcons>
+			{ drop && <DropDown Drop={setDrop}/>}
 			<Header>
 				<IconGroup>
 					<SideIcon>
@@ -35,9 +37,9 @@ const NavBar = () => {
 					<Icon exact to='/Profile' activeClassName='active'>
 						<BsPerson />
 					</Icon>
-					<SideIcon onClick={async () => await signOut()}>
-						<IoIosLogOut />
-					</SideIcon>
+					<Icon exact to='/Settings' activeClassName='active'>
+						<IoSettingsOutline />
+					</Icon>
 				</IconGroup>
 			</Header>
 		</>
@@ -45,16 +47,34 @@ const NavBar = () => {
 };
 
 export default NavBar;
-const LogoIcon = styled.div`
+const LogoIcon = styled(Link)`
 	margin: 2px 10px;
 	user-select: none;
 `;
-const Avatar = styled(LogoIcon)`
+const Avatar = styled.div`
+	user-select: none;
+	margin: 2px 10px;
+	position: relative;
+	display: grid;
+	place-items: center;
 	img {
 		width: 35px;
 		height: 35px;
 		border-radius: 50%;
 		object-fit: cover;
+	}
+`;
+const PhotoFrame = styled(BsCircle)`
+	position: absolute;
+	color: #368ad9;
+	font-size: 2.8rem;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	transition-duration: 0.5s;
+	opacity: 0;
+	&:hover {
+		opacity: 1;
 	}
 `;
 const SideIcons = styled.div`

@@ -11,7 +11,7 @@ const Profile = () => {
 		<>
 			<ProfileConatiner>
 				<ProfileBox>
-					<ProfileLeftSide />
+					<ProfileLeftSide Detail={postImg} />
 					<ProfileRightSide postImg={postImg} />
 				</ProfileBox>
 			</ProfileConatiner>

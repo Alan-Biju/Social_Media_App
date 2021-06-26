@@ -31,8 +31,8 @@ export const HomeContainer = styled.div`
 	display: flex;
 	align-items: center;
 	flex-direction: column;
-	padding: 10px;
 	overflow-y: scroll;
+	padding: 10px;
 	@media (max-width: 450px) {
 		height: calc(100% - 100px);
 	}

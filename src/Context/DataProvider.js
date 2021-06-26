@@ -15,6 +15,7 @@ const DataProvider = ({ children }) => {
 		return Theme === 'true' ? true : false;
 	};
 	const [isDarkMode, setIsDarkMode] = useState(InintialTheme());
+	const [change, setChange] = useState('');
 	///--------------------------------------profile setup------
 	useEffect(() => {
 		if (Auth) {
@@ -29,6 +30,8 @@ const DataProvider = ({ children }) => {
 		setPhoto,
 		posts,
 		postImg,
+		change,
+		setChange,
 	};
 	return <DataContext.Provider value={value}>{children}</DataContext.Provider>;
 };

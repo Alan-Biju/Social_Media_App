@@ -31,11 +31,11 @@ const PostGridContainer = styled.div`
 	padding: 10px 20px;
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-	grid-gap: 15px;
+	grid-gap: 10px;
 	grid-auto-flow: dense;
 	margin: 0 auto;
 	@media (max-width: 500px) {
-		grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
 		grid-gap: 5px;
 	}
 `;
