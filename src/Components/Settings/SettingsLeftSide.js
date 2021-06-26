@@ -7,6 +7,7 @@ const SettingsLeftSide = () => {
 	const { setChange } = useData();
 	const Settings = (listName) => {
 		setChange(listName);
+		setOpen(false);
 	};
 	console.log(isOpen);
 	return (
@@ -46,13 +47,13 @@ const SettingListBox = styled.div`
 	z-index: 6;
 	position: relative;
 	@media (max-width: 720px) {
-		width:260px;
+		width: 260px;
 		transition: all 0.7s ease;
 		position: fixed;
 		top: 60px;
-		transform: ${(prop) => 
-			prop.show ? 'translateX(0%)' : 'translateX(-104%)'
-		};
+		transform: ${(prop) =>
+			prop.show ? 'translateX(0%)' : 'translateX(-104%)'};
+		box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 	}
 `;
 const List = styled.div`

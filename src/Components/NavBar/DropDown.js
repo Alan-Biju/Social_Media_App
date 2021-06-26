@@ -40,13 +40,14 @@ to{
 `;
 const DropBox = styled.div`
 	padding: 5px;
-	width: 150px;
+	width: 180px;
 	background-color: #ffffff;
 	position: absolute;
 	right: 15px;
 	top: 55px;
 	animation: ${PopIn} 0.6s ease;
 	z-index: 5;
+	border-radius: 5px;
 	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 	&::after {
 		content: '';
@@ -71,7 +72,7 @@ const List = styled(Link)`
 	align-items: center;
 	p {
 		letter-spacing: 1px;
-		font-weight: 600;
+		font-weight: 500;
 		padding: 0 10px;
 	}
 	&:hover {
