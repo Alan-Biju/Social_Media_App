@@ -45,7 +45,7 @@ const Reset = () => {
 						)}
 						<InputContainer>
 							<Info>
-								We'll email you instructions on how to reset it{' '}
+								We'll email you instructions on how to reset it
 								<BsQuestionDiamond />
 							</Info>
 							<Input

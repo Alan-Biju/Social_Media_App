@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { lazy } from 'react';
 import styled from 'styled-components';
 import { useData } from '../../Context/DataProvider';
 import Edit from './SettingContent/Edit';
+const Verify=lazy(()=>import('./SettingContent/Verify'))
 // import Avatar from './Avatar';
 
 const SettingsRightSide = () => {
@@ -11,7 +12,7 @@ const SettingsRightSide = () => {
 			case 'Edit':
 				return <Edit />;
 			case 'Verify':
-				return 'Verify';
+				return <Verify/>;
 			case 'Password':
 				return 'Password';
 			case 'Delete':

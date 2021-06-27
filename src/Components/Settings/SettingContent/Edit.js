@@ -3,9 +3,14 @@ import styled from 'styled-components';
 import Avatar from '../../Profile/Avatar';
 
 const Edit = () => {
+	const UpdateHandler = (e) => {
+		e.preventDefault();
+		console.log('edit');
+}
+
 	return (
 		<>
-			<Form>
+			<Form onSubmit={UpdateHandler}>
 				<InputSection>
 					<Avatar />
 					<InputBox>
@@ -39,7 +44,7 @@ const Edit = () => {
 };
 
 export default Edit;
-const Form = styled.form`
+export const Form = styled.form`
 	height: 100vh;
 	width: 98%;
 	background-color: #ffffff;
@@ -51,7 +56,7 @@ const Form = styled.form`
 		width: 100%;
 	}
 `;
-const InputSection = styled.div`
+export const InputSection = styled.div`
 	width: 100%;
 	display: flex;
 	align-items: center;
