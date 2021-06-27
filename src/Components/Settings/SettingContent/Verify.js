@@ -6,10 +6,10 @@ import { TiArrowRight } from 'react-icons/ti';
 import { BsQuestionDiamond } from 'react-icons/bs';
 
 const Verify = () => {
-    const VerifyHandler = (e) => {
-        e.preventDefault();
-        console.log('verify');
-    }
+	const VerifyHandler = (e) => {
+		e.preventDefault();
+		console.log('verify');
+	};
 	return (
 		<>
 			<Form onSubmit={VerifyHandler}>
@@ -46,7 +46,12 @@ const Verify = () => {
 };
 
 export default Verify;
-const VerifySection = styled(InputSection)``;
+const VerifySection = styled(InputSection)`
+	height: 90%;
+	@media (max-width: 750px) {
+		height: 100%;
+	}
+`;
 const Image = styled.div`
 	font-family: 'Manrope', sans-serif;
 	text-align: center;
