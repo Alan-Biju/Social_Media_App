@@ -46,13 +46,17 @@ const SettingListBox = styled.div`
 	z-index: 6;
 	position: relative;
 	@media (max-width: 720px) {
+		height: calc(100% - 70px);
 		width: 260px;
-		transition: all 0.7s ease;
+		transition: transform 0.7s ease;
 		position: fixed;
 		top: 60px;
 		transform: ${(prop) =>
 			prop.show ? 'translateX(0%)' : 'translateX(-104%)'};
 		box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+	}
+	@media (max-width: 450px) {
+		height: calc(100% - 120px);
 	}
 `;
 const List = styled.div`
