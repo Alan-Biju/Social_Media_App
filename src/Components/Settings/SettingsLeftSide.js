@@ -9,7 +9,6 @@ const SettingsLeftSide = () => {
 		setChange(listName);
 		setOpen(false);
 	};
-	console.log(isOpen);
 	return (
 		<>
 			<SettingListBox show={isOpen}>

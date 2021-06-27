@@ -45,8 +45,8 @@ const DropBox = styled.div`
 	position: absolute;
 	right: 15px;
 	top: 55px;
-	animation: ${PopIn} 0.6s ease;
-	z-index: 5;
+	animation: ${PopIn} 0.6s cubic-bezier(0.25, 0.75, 0.5, 1.25);
+	z-index: 7;
 	border-radius: 5px;
 	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 	&::after {

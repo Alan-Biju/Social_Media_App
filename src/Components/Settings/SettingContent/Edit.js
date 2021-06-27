@@ -30,8 +30,8 @@ const Edit = () => {
 							<p>Bio</p>
 						</label>
 						<textarea type='text' name='' id='Bio' placeholder='Your Bio' />
-                    </InputBox>
-                    <Button type='submit'>Edit</Button>
+					</InputBox>
+					<Button type='submit'>Edit</Button>
 				</InputSection>
 			</Form>
 		</>
@@ -40,7 +40,7 @@ const Edit = () => {
 
 export default Edit;
 const Form = styled.form`
-	height: 100%;
+	height: 100vh;
 	width: 98%;
 	background-color: #ffffff;
 	padding: 20px;
@@ -58,14 +58,15 @@ const InputSection = styled.div`
 	flex-direction: column;
 	justify-content: space-around;
 	height: 400px;
+	background-color: inherit;
 `;
 const InputBox = styled.div`
-	width:100%;
-	max-width:450px;
+	width: 100%;
+	max-width: 450px;
 	min-width: 230px;
 	display: flex;
 	align-items: flex-start;
-    justify-content: space-between;
+	justify-content: space-between;
 	flex-direction: column;
 	label {
 		text-align: right;
@@ -103,28 +104,27 @@ const InputBox = styled.div`
 			}
 		}
 	}
-    @media(max-width:550px){
-        width: 100%;
-    }
+	@media (max-width: 550px) {
+		width: 100%;
+	}
 `;
 const Button = styled.button`
 	border: none;
-		outline: none;
-		width: 150px;
-        height:30px;
-		text-align: center;
-		padding: 6px 10px;
-		font-size: 0.8rem;
-		letter-spacing: 1px;
-		background: #419bf0;
-		cursor: pointer;
-		transition-duration: 0.5s;
-		border-radius: 3px;
-		font-family: 'Manrope', sans-serif;
-		color: #f6f6f6;
-		font-weight: 600;
-		&:hover {
-			background: #368ad8;
-		}
-
+	outline: none;
+	width: 150px;
+	height: 30px;
+	text-align: center;
+	padding: 6px 10px;
+	font-size: 0.8rem;
+	letter-spacing: 1px;
+	background: #419bf0;
+	cursor: pointer;
+	transition-duration: 0.5s;
+	border-radius: 3px;
+	font-family: 'Manrope', sans-serif;
+	color: #f6f6f6;
+	font-weight: 600;
+	&:hover {
+		background: #368ad8;
+	}
 `;
