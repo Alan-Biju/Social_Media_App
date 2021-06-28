@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Form, InputSection, InputBox, Button } from './Edit';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 const Password = () => {
     const passwordHandler = (e) => {
    	e.preventDefault();
@@ -8,11 +10,15 @@ const Password = () => {
     }
 	return (
 		<>
-			<Form onSubmit={passwordHandler} >
+			<Form onSubmit={passwordHandler}>
 				<PasswordSection>
 					<Image>
 						<h3>Reset password</h3>
-						<img src='/image/password.png' alt='password' />
+						<LazyLoadImage
+							src='/image/password.png'
+							alt='password'
+							effect='blur'
+						/>
 					</Image>
 					<InputBox>
 						<label htmlFor='password'>
@@ -45,7 +51,7 @@ const Password = () => {
 
 export default Password;
 const PasswordSection = styled(InputSection)`
-	min-height:500px;
+	min-height:480px;
 	
 `;
 const Image = styled.div`

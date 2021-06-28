@@ -1,12 +1,34 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
+import { useData } from '../../../Context/DataProvider';
+import HelperFirestoreFunctions from '../../../_FirebaseQueries/HelperFirestoreFunctions';
 import Avatar from '../../Profile/Avatar';
 
 const Edit = () => {
-	const UpdateHandler = (e) => {
+	const { profile } = useData();
+	const { ProfileUpdate } = HelperFirestoreFunctions();
+	const [name, setName] = useState('');
+	const [website, setWebsite] = useState('');
+	const [bio, setBio] = useState('');
+	const history = useHistory();
+	useEffect(() => {
+		if (profile) {
+			setName(profile.name);
+			setWebsite(profile.website);
+			setBio(profile.bio);
+		}
+	}, [profile]);
+	const UpdateHandler = async (e) => {
 		e.preventDefault();
-		console.log('edit');
-}
+
+		try {
+			await ProfileUpdate(name, website, bio);
+			history.push('/Profile');
+		} catch (e) {
+			console.log(e);
+		}
+	};
 
 	return (
 		<>
@@ -17,24 +39,41 @@ const Edit = () => {
 						<label htmlFor='Name'>
 							<p>Name</p>
 						</label>
-						<input type='text' name='' id='Name' placeholder='Your Name' />
+						<input
+							value={name}
+							type='text'
+							name=''
+							id='Name'
+							placeholder='Your Name'
+							onChange={(e) => setName(e.target.value)}
+						/>
 					</InputBox>
 					<InputBox>
 						<label htmlFor='Website'>
 							<p>Website</p>
 						</label>
 						<input
+							value={website}
 							type='text'
 							name=''
 							id='Website'
 							placeholder='Your website'
+							onChange={(e) => setWebsite(e.target.value)}
 						/>
 					</InputBox>
 					<InputBox>
 						<label htmlFor='Bio'>
 							<p>Bio</p>
 						</label>
-						<textarea type='text' name='' id='Bio' placeholder='Your Bio' />
+
+						<textarea
+							value={bio}
+							type='text'
+							name=''
+							id='Bio'
+							placeholder='Your Bio'
+							onChange={(e) => setBio(e.target.value)}
+						/>
 					</InputBox>
 					<Button type='submit'>Edit</Button>
 				</InputSection>

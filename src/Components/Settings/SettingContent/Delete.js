@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import { Form, InputSection, InputBox, Button } from './Edit';
 import { Info } from './Verify';
 import { BsQuestionDiamond } from 'react-icons/bs';
-
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 const Delete = () => {
 	return (
 		<>
@@ -11,7 +12,7 @@ const Delete = () => {
 				<DeleteSection>
 					<Image>
 						<h3>Delete Account</h3>
-						<img src='/image/delete.svg' alt='delete' />
+						<LazyLoadImage src='/image/delete.svg' alt='delete' effect='blur' />
 					</Image>
 					<Info>
 						<h6>
@@ -40,7 +41,7 @@ const Delete = () => {
 
 export default Delete;
 const DeleteSection = styled(InputSection)`
-	min-height: 500px;
+	min-height: 480px;
 `;
 const Image = styled.div`
 	font-family: 'Manrope', sans-serif;

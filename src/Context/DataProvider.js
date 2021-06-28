@@ -8,7 +8,7 @@ export const useData = () => {
 };
 const DataProvider = ({ children }) => {
 	const { Auth } = useAuth();
-	const { posts, postImg } = HelperFirestore();
+	const { posts, postImg, profile } = HelperFirestore();
 	const [photo, setPhoto] = useState(Auth && Auth.photoURL);
 	const InintialTheme = () => {
 		const Theme = storage.getItem('Theme');
@@ -32,6 +32,7 @@ const DataProvider = ({ children }) => {
 		postImg,
 		change,
 		setChange,
+		profile
 	};
 	return <DataContext.Provider value={value}>{children}</DataContext.Provider>;
 };

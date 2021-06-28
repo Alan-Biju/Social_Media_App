@@ -4,7 +4,8 @@ import { Form, InputSection } from './Edit';
 import { HiBadgeCheck } from 'react-icons/hi';
 import { TiArrowRight } from 'react-icons/ti';
 import { BsQuestionDiamond } from 'react-icons/bs';
-
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 const Verify = () => {
 	const VerifyHandler = (e) => {
 		e.preventDefault();
@@ -16,7 +17,7 @@ const Verify = () => {
 				<VerifySection>
 					<Image>
 						<h3>Verify your account</h3>
-						<img src='/image/verify.svg' alt='@Email' />
+						<LazyLoadImage src='/image/verify.svg' alt='@Email' effect='blur' />
 					</Image>
 					<Demo>
 						<p>Alan Biju</p>
@@ -99,7 +100,7 @@ export const Info = styled.div`
 		width: 98%;
 	}
 `;
- const Button = styled.button`
+const Button = styled.button`
 	border: none;
 	outline: none;
 	width: 150px;

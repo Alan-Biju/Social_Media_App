@@ -6,6 +6,22 @@ const HelperFirestore = () => {
 	const { Auth } = useAuth();
 	const [postImg, setPostImg] = useState();
 	const [posts, setPosts] = useState('');
+	const [profile, setProfile] = useState('');
+
+	///-----------------------------------------------------Profile Details----------------------------
+
+	useEffect(() => {
+		const unSubscribe =
+			Auth &&
+			db.collection(`users/${Auth.uid}/Profile`).onSnapshot((res) => {
+				res.forEach((post) => {
+					setProfile(post.data());
+				});
+			});
+		return () => {
+			Auth && unSubscribe();
+		};
+	}, [Auth]);
 
 	//-------------------------------------------fetching post image for user------------------------------
 
@@ -49,7 +65,7 @@ const HelperFirestore = () => {
 
 	///------------------------------------------------------------
 
-	return { postImg, posts };
+	return { postImg, posts, profile };
 };
 
 export default HelperFirestore;
