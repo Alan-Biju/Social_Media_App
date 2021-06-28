@@ -31,9 +31,7 @@ const Delete = () => {
 						</label>
 						<input type='text' name='' id='Name' />
 					</DeleteBox>
-                    <DeleteButton>
-                        Delete Account
-                    </DeleteButton>
+					<DeleteButton>Delete Account</DeleteButton>
 				</DeleteSection>
 			</Form>
 		</>
@@ -42,7 +40,7 @@ const Delete = () => {
 
 export default Delete;
 const DeleteSection = styled(InputSection)`
-	height: 100%;
+	min-height: 500px;
 `;
 const Image = styled.div`
 	font-family: 'Manrope', sans-serif;
@@ -65,6 +63,7 @@ const DeleteBox = styled(InputBox)`
 	}
 `;
 const DeleteButton = styled(Button)`
+	margin: 10px 0;
 	background-color: #d12d50;
 	&:hover {
 		background-color: #b81538;

@@ -62,7 +62,7 @@ export const InputSection = styled.div`
 	align-items: center;
 	flex-direction: column;
 	justify-content: space-around;
-	height: 400px;
+	min-height: 400px;
 	background-color: inherit;
 `;
 export const InputBox = styled.div`

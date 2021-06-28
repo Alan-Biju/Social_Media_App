@@ -45,7 +45,7 @@ const Password = () => {
 
 export default Password;
 const PasswordSection = styled(InputSection)`
-	height: 90%;
+	min-height:500px;
 	
 `;
 const Image = styled.div`
