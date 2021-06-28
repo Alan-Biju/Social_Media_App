@@ -65,7 +65,7 @@ export const InputSection = styled.div`
 	height: 400px;
 	background-color: inherit;
 `;
-const InputBox = styled.div`
+export const InputBox = styled.div`
 	width: 100%;
 	max-width: 450px;
 	min-width: 230px;
@@ -113,7 +113,7 @@ const InputBox = styled.div`
 		width: 100%;
 	}
 `;
-const Button = styled.button`
+export const Button = styled.button`
 	border: none;
 	outline: none;
 	width: 150px;

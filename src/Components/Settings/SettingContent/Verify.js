@@ -29,11 +29,10 @@ const Verify = () => {
 					<Info>
 						<h6>
 							A verified badge is a check that appears next to your account's
-							name to indicate that the accunt is the authentic presense of a
+							name to indicate that the account is the authentic presense of a
 							notable public figure or entity it represents
 						</h6>
 						<p>
-							{' '}
 							<BsQuestionDiamond /> We'll email you instructions on how to
 							verify the account
 						</p>
@@ -81,7 +80,7 @@ const Demo = styled.div`
 		font-weight: 600;
 	}
 `;
-const Info = styled.div`
+export const Info = styled.div`
 	font-family: 'Manrope', sans-serif;
 	width: 80%;
 	text-align: center;
@@ -100,7 +99,7 @@ const Info = styled.div`
 		width: 98%;
 	}
 `;
-const Button = styled.button`
+ const Button = styled.button`
 	border: none;
 	outline: none;
 	width: 150px;
