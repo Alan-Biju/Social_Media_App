@@ -84,7 +84,8 @@ const Edit = () => {
 
 export default Edit;
 export const Form = styled.form`
-	height: 100vh;
+	height: 100%;
+	min-height: 500px;
 	width: 98%;
 	background-color: #ffffff;
 	padding: 20px;
