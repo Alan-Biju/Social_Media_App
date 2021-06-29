@@ -1,13 +1,11 @@
-import { useState} from 'react';
+import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useAuth } from '../Context/AuthProvider';
-import { useData } from '../Context/DataProvider';
-import db, { auth } from '../Firebase';
+import db from '../Firebase';
 import { storage } from '../Firebase';
 const HelperStorage = () => {
 	const history = useHistory();
 	const { Auth } = useAuth();
-	const { setPhoto } = useData();
 	const [progress, setProgress] = useState('');
 	///-------------------------------------------------postUpload-------------
 	const postUpload = async (caption, description, location, file) => {
@@ -81,17 +79,14 @@ const HelperStorage = () => {
 					.child(`${Auth.displayName}`)
 					.getDownloadURL()
 					.then(async (url) => {
-						const user = auth.currentUser;
-						await user
-							.updateProfile({
-								photoURL: url,
+						await db
+							.collection(`users/${Auth.uid}/Profile`)
+							.doc('details')
+							.update({
+								photoUrl: url,
 							})
 							.then(() => {
-								console.log('updated');
-								setPhoto(url);
-							})
-							.catch((e) => {
-								console.log(e);
+								console.log('up');
 							});
 					});
 			},

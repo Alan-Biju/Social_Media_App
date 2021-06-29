@@ -7,7 +7,7 @@ import { RiLoader5Fill } from 'react-icons/ri';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/black-and-white.css';
 const Avatar = () => {
-	const { photo } = useData();
+	const { profile } = useData();
 	const { profilePhoto, progress } = HelperStorage();
 	const [image, setImage] = useState();
 
@@ -26,7 +26,14 @@ const Avatar = () => {
 			<Avatars>
 				<label htmlFor='Photo'>
 					<div>
-						<Img src={photo} alt='Profile Pic' effect='black-and-white' />
+						<Img
+							src={profile && profile.photoUrl}
+							alt='Profile Pic'
+							effect='black-and-white'
+							onError={(e) => {
+								e.target.src = '/image/profile.png';
+							}}
+						/>
 						<Add>
 							{progress ? (
 								progress === 100 ? (

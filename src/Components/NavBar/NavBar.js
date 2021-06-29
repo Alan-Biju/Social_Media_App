@@ -10,19 +10,21 @@ import { useData } from '../../Context/DataProvider';
 import DropDown from './DropDown';
 const NavBar = () => {
 	const [drop, setDrop] = useState(false);
-	const { photo } = useData();
+	const { profile } = useData();
 	return (
 		<>
 			<SideIcons>
 				<LogoIcon to='/'>
 					<NavBarIcon />
 				</LogoIcon>
-				<Avatar onClick={()=>setDrop(!drop)}>
+				<Avatar onClick={() => setDrop(!drop)}>
 					<PhotoFrame />
-					<img src={photo} alt='Profile Pic' />
+					<img src={ profile && profile.photoUrl } alt='Profile Pic' onError={ (e) => {
+						e.target.src='/image/profile.png'
+					}}/>
 				</Avatar>
 			</SideIcons>
-			{ drop && <DropDown Drop={setDrop}/>}
+			{drop && <DropDown Drop={setDrop} />}
 			<Header>
 				<IconGroup>
 					<SideIcon>

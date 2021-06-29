@@ -15,7 +15,7 @@ const DropDown = ({ Drop }) => {
 					<p>Saved</p>
 				</List>
 				<List
-					to='/Login'
+					to=''
 					onClick={async () => {
 						await signOut();
 					}}>
