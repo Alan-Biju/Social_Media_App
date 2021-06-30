@@ -16,7 +16,7 @@ export const lightTheme = {
 export const darkTheme = {
 	mainBackground: '#1B1C1E',
 	postBG: '#1f1f1f',
-	navBG: '#2b2b2b',
+	navBG: '#1f1f1f',
 	iconColor: '#f6f6f6',
 	mainFont: '#eeeaea',
 	greyFont: '#adaaaa',
