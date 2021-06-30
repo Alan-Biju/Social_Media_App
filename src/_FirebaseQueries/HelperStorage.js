@@ -43,6 +43,7 @@ const HelperStorage = () => {
 									image: url,
 									Datetime: new Date(),
 									profileURL: profile.photoUrl,
+									isVerified: Auth.emailVerified,
 								})
 								.then(() => {
 									history.push('/');
@@ -94,6 +95,7 @@ const HelperStorage = () => {
 												.doc(data.id)
 												.update({
 													profileURL: url,
+													isVerified: Auth.emailVerified,
 												});
 										});
 									});

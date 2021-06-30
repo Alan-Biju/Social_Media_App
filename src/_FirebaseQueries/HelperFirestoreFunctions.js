@@ -5,6 +5,8 @@ import db from '../Firebase';
 const HelperFirestoreFunctions = () => {
 	const { Auth } = useAuth();
 	const { profile } = useData();
+
+	//----------------------------------profile Update-----------------------
 	const ProfileUpdate = async (name, website, bio) => {
 		return await db
 			.collection(`users`)
@@ -17,9 +19,9 @@ const HelperFirestoreFunctions = () => {
 				bio: bio,
 				uid: Auth.uid,
 				photoUrl: profile.photoUrl,
+				isVerified:Auth.emailVerified,
 			})
 			.then(async () => {
-				console.log('up');
 				await db
 					.collection(`users/${Auth.uid}/posts`)
 					.get()
@@ -27,12 +29,13 @@ const HelperFirestoreFunctions = () => {
 						res.forEach((data) => {
 							db.collection(`users/${Auth.uid}/posts`).doc(data.id).update({
 								name: name,
+								isVerified: Auth.emailVerified,
 							});
 						});
 					});
 			});
 	};
-
+	///--------------------------------------------------------
 	return { ProfileUpdate };
 };
 

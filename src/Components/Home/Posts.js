@@ -4,6 +4,7 @@ import { FiHeart, FiBookmark, FiHash } from 'react-icons/fi';
 import { FaRegComment } from 'react-icons/fa';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import Badge from '../../Reusable/Badge';
 const Posts = ({ Data }) => {
 	let t = new Date(1970, 0, 1);
 	t.setSeconds(Data.Datetime);
@@ -23,7 +24,8 @@ const Posts = ({ Data }) => {
 							}}
 						/>
 						<p>
-							{Data && Data.name} <span> . {Data.location}</span>
+							{Data.name}
+							{Data.isVerified && <Badge />} <span> . {Data.location}</span>
 						</p>
 					</Avatar>
 
@@ -51,7 +53,7 @@ const Posts = ({ Data }) => {
 						<span>
 							<FiHash />
 						</span>
-						{Data && Data.caption}
+						{Data.caption}
 					</h1>
 					<p>more...</p>
 				</TextSection>
@@ -96,6 +98,8 @@ const Avatar = styled.div`
 		margin: 0 5px;
 		letter-spacing: 1px;
 		text-transform: capitalize;
+		display: flex;
+		align-items: center;
 	}
 	span {
 		color: #646363;
