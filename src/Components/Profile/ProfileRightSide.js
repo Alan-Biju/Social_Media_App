@@ -7,10 +7,15 @@ const ProfileRightSide = ({ postImg }) => {
 		<>
 			<PostsContainer>
 				<PostGridContainer>
-					{postImg &&
+					{postImg && postImg.length ? (
 						postImg.map((post) => {
 							return <PostImage key={post.id} Data={post} />;
-						})}
+						})
+					) : (
+						<Image>
+							<img src='/image/posts.svg' alt='no Post' />
+						</Image>
+					)}
 				</PostGridContainer>
 			</PostsContainer>
 		</>
@@ -19,7 +24,7 @@ const ProfileRightSide = ({ postImg }) => {
 
 export default ProfileRightSide;
 const PostsContainer = styled.div`
-	width:100% ;
+	width: 100%;
 	height: 100%;
 	background-color: #ffffff;
 	overflow-y: scroll;
@@ -28,6 +33,7 @@ const PostsContainer = styled.div`
 	}
 `;
 const PostGridContainer = styled.div`
+	height: 100%;
 	padding: 10px 20px;
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -37,5 +43,15 @@ const PostGridContainer = styled.div`
 	@media (max-width: 500px) {
 		grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
 		grid-gap: 5px;
+	}
+`;
+const Image = styled.div`
+	display: grid;
+	place-items: center;
+	height: 100%;
+	width: 100%;
+	img {
+		width: 330px;
+		object-fit: contain;
 	}
 `;

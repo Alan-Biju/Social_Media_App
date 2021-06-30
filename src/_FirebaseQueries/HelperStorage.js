@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useAuth } from '../Context/AuthProvider';
+import { useData } from '../Context/DataProvider';
 import db from '../Firebase';
 import { storage } from '../Firebase';
 const HelperStorage = () => {
 	const history = useHistory();
 	const { Auth } = useAuth();
+	const { profile } = useData();
 	const [progress, setProgress] = useState('');
 	///-------------------------------------------------postUpload-------------
 	const postUpload = async (caption, description, location, file) => {
@@ -36,7 +38,7 @@ const HelperStorage = () => {
 								.doc(`${Auth.uid}`)
 								.collection('posts')
 								.add({
-									name: Auth.displayName,
+									name: profile.name,
 									caption: caption,
 									description: description,
 									location: location,
@@ -57,7 +59,6 @@ const HelperStorage = () => {
 	////------------------------------------------------Profile set-------------------------------
 
 	const profilePhoto = (file) => {
-		console.log('from file');
 		const Ref = storage
 			.ref(`ProfilePhoto/${Auth.uid}/${Auth.displayName}`)
 			.put(file);

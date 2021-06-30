@@ -2,9 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { useData } from '../../Context/DataProvider';
 import { Link } from 'react-router-dom';
+import Badge from '../../Reusable/Badge';
 
 const Details = () => {
-	const { profile } = useData();
+	const { profile, isverified } = useData();
 
 	return (
 		<>
@@ -14,13 +15,16 @@ const Details = () => {
 				</Button>
 
 				<Info>
-					<h3>{profile && profile.name}</h3>
-					<p>{profile && profile.bio}</p>
+					<h3>
+						{profile.name}
+						{isverified && <Badge />}
+					</h3>
+					<p>{profile.bio}</p>
 					<a
-						href={`https://${profile && profile.website}`}
+						href={`https://${profile.website}`}
 						target='_blank'
 						rel='noopener noreferrer'>
-						{profile && profile.website}
+						{profile.website}
 					</a>
 				</Info>
 			</DetailsContainer>
@@ -62,6 +66,9 @@ const Info = styled.div`
 	h3 {
 		font-size: 1rem;
 		padding: 20px 0;
+		text-transform: capitalize;
+		display: flex;
+		align-items: center;
 	}
 	P {
 		font-size: 0.8rem;

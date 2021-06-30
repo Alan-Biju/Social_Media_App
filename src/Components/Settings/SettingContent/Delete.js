@@ -6,9 +6,14 @@ import { BsQuestionDiamond } from 'react-icons/bs';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 const Delete = () => {
+	const DeleteHandler = (e) => {
+		e.preventDefault();
+		console.log('delete');
+		
+	}
 	return (
 		<>
-			<Form>
+			<Form onSubmit={DeleteHandler}>
 				<DeleteSection>
 					<Image>
 						<h3>Delete Account</h3>
@@ -32,7 +37,7 @@ const Delete = () => {
 						</label>
 						<input type='text' name='' id='Name' />
 					</DeleteBox>
-					<DeleteButton>Delete Account</DeleteButton>
+					<DeleteButton type='submit'>Delete Account</DeleteButton>
 				</DeleteSection>
 			</Form>
 		</>

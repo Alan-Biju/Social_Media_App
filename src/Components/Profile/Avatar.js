@@ -27,7 +27,7 @@ const Avatar = () => {
 				<label htmlFor='Photo'>
 					<div>
 						<Img
-							src={profile && profile.photoUrl}
+							src={profile.photoUrl}
 							alt='Profile Pic'
 							effect='black-and-white'
 							onError={(e) => {

@@ -1,15 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Form, InputSection } from './Edit';
-import { HiBadgeCheck } from 'react-icons/hi';
 import { TiArrowRight } from 'react-icons/ti';
 import { BsQuestionDiamond } from 'react-icons/bs';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import { useAuth } from '../../../Context/AuthProvider';
+import Badge from '../../../Reusable/Badge';
+import { useData } from '../../../Context/DataProvider';
+import ErrorMessage from '../../../Reusable/ErrorMessage';
 const Verify = () => {
-	const VerifyHandler = (e) => {
+	const [message, setMessage] = useState(false);
+	const { profile, isverified } = useData();
+	const { VerifyMail } = useAuth();
+	const VerifyHandler = async (e) => {
 		e.preventDefault();
-		console.log('verify');
+		try {
+			await VerifyMail();
+			setMessage('Email sent')
+		} catch (e) {
+			setMessage(e.message);
+		}
 	};
 	return (
 		<>
@@ -20,11 +31,11 @@ const Verify = () => {
 						<LazyLoadImage src='/image/verify.svg' alt='@Email' effect='blur' />
 					</Image>
 					<Demo>
-						<p>Alan Biju</p>
+						<p>{profile.name}</p>
 						<TiArrowRight />
 						<p>
-							Alan biju
-							<Check />
+							{profile.name}
+							<Badge />
 						</p>
 					</Demo>
 					<Info>
@@ -38,9 +49,12 @@ const Verify = () => {
 							verify the account
 						</p>
 					</Info>
-					<Button>Send</Button>
+					<Button disabled={isverified}>
+						{isverified ? 'Verified' : 'Send'}
+					</Button>
 				</VerifySection>
 			</Form>
+			{message && <ErrorMessage state={[message, setMessage]} />}
 		</>
 	);
 };
@@ -63,10 +77,6 @@ const Image = styled.div`
 		letter-spacing: 1px;
 	}
 `;
-const Check = styled(HiBadgeCheck)`
-	color: #3aa9cb;
-	font-size: 1.2rem;
-`;
 const Demo = styled.div`
 	display: flex;
 	align-items: center;
@@ -79,6 +89,7 @@ const Demo = styled.div`
 		font-family: 'Manrope', sans-serif;
 		font-size: 0.9rem;
 		font-weight: 600;
+		text-transform: capitalize;
 	}
 `;
 export const Info = styled.div`

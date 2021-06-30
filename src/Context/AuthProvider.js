@@ -7,39 +7,41 @@ export const useAuth = () => {
 const AuthProvider = ({ children }) => {
 	const [Auth, setAuth] = useState();
 	const [Load, setLoad] = useState(true);
-
 	///-------------------------------------Login function---------------------------------
-	const login = (email, password) => {
-		return auth.signInWithEmailAndPassword(email, password);
+	const login = async (email, password) => {
+		return await auth.signInWithEmailAndPassword(email, password);
 	};
 	///---------------------------------Register function------------------------------------
 	const register = async (email, password, name) => {
 		const res = await auth.createUserWithEmailAndPassword(email, password);
 		if (res) {
 			console.log(res);
-			await db
-				.collection(`users`)
+			db.collection(`users`)
 				.doc(res.user.uid)
 				.collection('Profile')
 				.doc('details')
 				.set({
 					name: name,
 					website: '',
-					bio: '',
+					bio: 'We are delighted to have you among us. On behalf of all the members and the management, we would like to extend our warmest welcome and good wishes!',
 					uid: res.user.uid,
 					photoUrl: '',
 				});
 		}
 	};
 	///-------------------------------------Reset-------------------------------------
-	const reset = (email) => {
-		return auth.sendPasswordResetEmail(email);
+	const reset = async (email) => {
+		return await auth.sendPasswordResetEmail(email);
 	};
 	///-----------------------------------signOut-----------------------------------------
 	const signOut = () => {
 		return auth.signOut();
 	};
-
+	///----------------------------------------------verfication-------------------------
+	const VerifyMail = async () => {
+		return await auth.currentUser.sendEmailVerification();
+		// Email verification sent!
+	};
 	///------------------------Auth check from fire base--------------------------------------
 	useEffect(() => {
 		const isUser = auth.onAuthStateChanged((user) => {
@@ -56,6 +58,7 @@ const AuthProvider = ({ children }) => {
 		register,
 		reset,
 		signOut,
+		VerifyMail,
 	};
 	return (
 		<AuthContext.Provider value={value}>

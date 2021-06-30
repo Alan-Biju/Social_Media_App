@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { useData } from '../../../Context/DataProvider';
+import ErrorMessage from '../../../Reusable/ErrorMessage';
 import HelperFirestoreFunctions from '../../../_FirebaseQueries/HelperFirestoreFunctions';
 import Avatar from '../../Profile/Avatar';
 
@@ -11,7 +11,8 @@ const Edit = () => {
 	const [name, setName] = useState('');
 	const [website, setWebsite] = useState('');
 	const [bio, setBio] = useState('');
-	const history = useHistory();
+	const [message, setMessage] = useState(false);
+
 	useEffect(() => {
 		if (profile) {
 			setName(profile.name);
@@ -24,9 +25,11 @@ const Edit = () => {
 
 		try {
 			await ProfileUpdate(name, website, bio);
-			history.push('/Profile');
+			setMessage('Updated');
 		} catch (e) {
 			console.log(e);
+			setMessage(e);
+
 		}
 	};
 
@@ -78,6 +81,7 @@ const Edit = () => {
 					<Button type='submit'>Edit</Button>
 				</InputSection>
 			</Form>
+			{ message && <ErrorMessage state={ [message, setMessage] }/> }
 		</>
 	);
 };
