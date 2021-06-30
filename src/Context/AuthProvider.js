@@ -42,6 +42,15 @@ const AuthProvider = ({ children }) => {
 		return await auth.currentUser.sendEmailVerification();
 		// Email verification sent!
 	};
+	///--------------------------Password update-------------------------
+	const PasswordUpdate = async (newPassword) => {
+		return await auth.currentUser.updatePassword(newPassword);
+	};
+	///-------------------------delete Account----------------------------
+	const Delete = async() => {
+		return await auth.currentUser.delete();
+}
+
 	///------------------------Auth check from fire base--------------------------------------
 	useEffect(() => {
 		const isUser = auth.onAuthStateChanged((user) => {
@@ -59,6 +68,8 @@ const AuthProvider = ({ children }) => {
 		reset,
 		signOut,
 		VerifyMail,
+		PasswordUpdate,
+		Delete,
 	};
 	return (
 		<AuthContext.Provider value={value}>

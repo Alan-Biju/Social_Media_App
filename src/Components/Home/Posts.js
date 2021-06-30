@@ -16,8 +16,11 @@ const Posts = ({ Data }) => {
 				<Heading>
 					<Avatar>
 						<img
-							src='https://pfpmaker.com/_nuxt/img/profile-3-1.3e702c5.png'
+							src={Data && Data.profileURL}
 							alt='Profile Pic'
+							onError={(e) => {
+								e.target.src = '/image/profile.png';
+							}}
 						/>
 						<p>
 							{Data && Data.name} <span> . {Data.location}</span>
@@ -27,7 +30,12 @@ const Posts = ({ Data }) => {
 					<DateTime>{`${day}-${month}-${year.split('.')[0]}`}</DateTime>
 				</Heading>
 				<ImageContainer>
-					<LazyLoadImage src={Data.image} effect='blur' threshold={200} alt='postPic'/>
+					<LazyLoadImage
+						src={Data.image}
+						effect='blur'
+						threshold={200}
+						alt='postPic'
+					/>
 				</ImageContainer>
 				<IconSection>
 					<IconLeft>
@@ -79,6 +87,7 @@ const Avatar = styled.div`
 		width: 30px;
 		height: 30px;
 		border-radius: 50%;
+		object-fit: cover;
 	}
 	p {
 		font-family: 'Manrope', sans-serif;

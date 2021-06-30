@@ -1,9 +1,9 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import { AiOutlineCloseSquare } from 'react-icons/ai';
-const Message = ['Email sent', 'Updated'];
+const Message = ['Email sent', 'Updated', 'Password Changed'];
 
-function ErrorMessage({ state }) {
+const ErrorMessage = ({ state }) => {
 	const [message, setMessage] = state;
 	return (
 		<>
@@ -13,7 +13,7 @@ function ErrorMessage({ state }) {
 			</ErrorContainer>
 		</>
 	);
-}
+};
 
 export default ErrorMessage;
 const MoveIn = keyframes`
@@ -27,7 +27,7 @@ from{
 const ErrorContainer = styled.div`
 	width: 235px;
 	min-width: 235px;
-	max-width: 380px;
+	max-width: 330px;
 	min-height: 50px;
 	background-color: ${(prop) =>
 		Message.includes(prop.message) ? '#28DF99' : '#ff5042'};

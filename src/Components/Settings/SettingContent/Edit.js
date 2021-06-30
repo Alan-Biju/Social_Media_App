@@ -27,8 +27,7 @@ const Edit = () => {
 			await ProfileUpdate(name, website, bio);
 			setMessage('Updated');
 		} catch (e) {
-			console.log(e);
-			setMessage(e);
+			setMessage(e.message);
 
 		}
 	};

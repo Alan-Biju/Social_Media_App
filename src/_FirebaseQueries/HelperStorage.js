@@ -34,9 +34,7 @@ const HelperStorage = () => {
 						.then(async (url) => {
 							///--------------------------------------------firebase storage-----------------
 							await db
-								.collection(`users`)
-								.doc(`${Auth.uid}`)
-								.collection('posts')
+								.collection(`users/${Auth.uid}/posts`)
 								.add({
 									name: profile.name,
 									caption: caption,
@@ -44,7 +42,7 @@ const HelperStorage = () => {
 									location: location,
 									image: url,
 									Datetime: new Date(),
-									profileURL: Auth.photoURL,
+									profileURL: profile.photoUrl,
 								})
 								.then(() => {
 									history.push('/');
@@ -88,6 +86,17 @@ const HelperStorage = () => {
 							})
 							.then(() => {
 								console.log('up');
+								db.collection(`users/${Auth.uid}/posts`)
+									.get()
+									.then((res) => {
+										res.forEach((data) => {
+											db.collection(`users/${Auth.uid}/posts`)
+												.doc(data.id)
+												.update({
+													profileURL: url,
+												});
+										});
+									});
 							});
 					});
 			},

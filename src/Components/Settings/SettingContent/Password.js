@@ -1,17 +1,30 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import { Form, InputSection, InputBox, Button } from './Edit';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import { useAuth } from '../../../Context/AuthProvider';
+import ErrorMessage from '../../../Reusable/ErrorMessage';
 const Password = () => {
 	const Password = useRef();
 	const Re_Password = useRef();
-
-	const passwordHandler = (e) => {
+	const { PasswordUpdate } = useAuth();
+	const [message, setMessage] = useState(false);
+	const passwordHandler = async (e) => {
 		e.preventDefault();
 		if (Password.current.value === Re_Password.current.value) {
 			console.log('cc');
-		};
+			try {
+				await PasswordUpdate(Re_Password.current.value);
+				setMessage('Password Changed');
+				Password.current.value = '';
+				Re_Password.current.value = '';
+			} catch (e) {
+				setMessage(e.message);
+			}
+		} else {
+			setMessage('Password Does not match');
+		}
 	};
 	return (
 		<>
@@ -55,6 +68,7 @@ const Password = () => {
 					<ResetButton> Reset Password </ResetButton>
 				</PasswordSection>
 			</Form>
+			{message && <ErrorMessage state={[message, setMessage]} />}
 		</>
 	);
 };
