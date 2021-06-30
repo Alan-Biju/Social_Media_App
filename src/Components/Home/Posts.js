@@ -68,10 +68,11 @@ const PostContainer = styled.div`
 	max-width: 430px;
 	min-width: 300px;
 	height: 540px;
-	background-color: #ffffff;
+	transition: background-color 0.5s ease-in-out;
+	background-color: ${(prop) => prop.theme.postBG};
 	margin: 0 auto;
 	border-radius: 5px;
-	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+	box-shadow: rgba(0, 0, 0, 0.2) 0px 7px 29px 0px;
 `;
 const Heading = styled.div`
 	width: 100%;
@@ -100,9 +101,12 @@ const Avatar = styled.div`
 		text-transform: capitalize;
 		display: flex;
 		align-items: center;
+		transition: color 0.5s ease-in-out;
+		color: ${(prop) => prop.theme.mainFont};
 	}
 	span {
-		color: #646363;
+		transition: color 0.5s ease-in-out;
+		color: ${(prop) => prop.theme.greyFont};
 	}
 `;
 const DateTime = styled.p`
@@ -110,6 +114,8 @@ const DateTime = styled.p`
 	font-size: 0.5rem;
 	font-weight: 500;
 	letter-spacing: 1px;
+	transition: color 0.5s ease-in-out;
+	color: ${(prop) => prop.theme.mainFont};
 `;
 const ImageContainer = styled.div`
 	width: 100%;
@@ -125,12 +131,16 @@ const IconSection = styled.div`
 	align-items: center;
 	justify-content: space-between;
 	padding: 10px;
+	transition: color 0.5s ease-in-out;
+	color: ${(prop) => prop.theme.mainFont};
 `;
 const IconLeft = styled.div`
 	width: 50px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	transition: color 0.5s ease-in-out;
+	color: ${(prop) => prop.theme.mainFont};
 `;
 const Heart = styled(FiHeart)``;
 const IconRight = styled.div``;
@@ -141,6 +151,8 @@ const TextSection = styled.div`
 	justify-content: space-between;
 	padding: 0 10px;
 	font-family: 'Manrope', sans-serif;
+	transition: color 0.5s ease-in-out;
+	color: ${(prop) => prop.theme.mainFont};
 
 	h1 {
 		font-size: 0.7rem;

@@ -19,9 +19,13 @@ const NavBar = () => {
 				</LogoIcon>
 				<Avatar onClick={() => setDrop(!drop)}>
 					<PhotoFrame />
-					<img src={ profile && profile.photoUrl } alt='Profile Pic' onError={ (e) => {
-						e.target.src='/image/profile.png'
-					}}/>
+					<img
+						src={profile && profile.photoUrl}
+						alt='Profile Pic'
+						onError={(e) => {
+							e.target.src = '/image/profile.png';
+						}}
+					/>
 				</Avatar>
 			</SideIcons>
 			{drop && <DropDown Drop={setDrop} />}
@@ -87,7 +91,8 @@ const SideIcons = styled.div`
 	justify-content: space-between;
 	position: absolute;
 	top: 0;
-	background-color: white;
+	transition: background-color 0.5s ease-in-out;
+	background-color: ${(prop) => prop.theme.postBG};
 	@media (max-width: 450px) {
 		position: static;
 		position: sticky;
@@ -100,7 +105,8 @@ const Header = styled.header`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background: #ffffff;
+	transition: background-color 0.5s ease-in-out;
+	background-color: ${(prop) => prop.theme.postBG};
 	box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 	z-index: 9;
 	user-select: none;
@@ -120,14 +126,14 @@ const IconGroup = styled.div`
 	justify-content: space-around;
 `;
 const Pulse = keyframes`
- 0% {
-    box-shadow: 0 0 0 0 #0a0a0a28;
+ 0% {	 
+	box-shadow:0 0 0 0 ${(prop) => prop.theme.pluseArea1};
   }
   70% {
-      box-shadow: 0 0 0 3px #05050529;
+      box-shadow: 0 0 0 3px ${(prop) => prop.theme.pluseArea2};
   }
   100% {
-      box-shadow: 0 0 0 0 #1d1c1c1d;
+      box-shadow: 0 0 0 0 ${(prop) => prop.theme.pluseArea3};
   }
 `;
 const Icon = styled(NavLink)`
@@ -143,13 +149,16 @@ const Icon = styled(NavLink)`
 	position: relative;
 	user-select: none;
 	&:hover {
-		color: #1a1919;
+		transition: color 0.5s ease-in-out;
+		color: ${(prop) => prop.theme.mainFont};
 	}
 	&.active {
-		color: #1a1919;
+		transition: color 0.5s ease-in-out;
+		color: ${(prop) => prop.theme.mainFont};
 		&::after {
 			content: ' ';
-			background-color: #1a1919;
+			transition: background-color 0.5s ease-in-out;
+			background-color: ${(prop) => prop.theme.pluse};
 			position: absolute;
 			width: 5px;
 			height: 5px;
@@ -173,6 +182,7 @@ const SideIcon = styled.div`
 	cursor: pointer;
 	z-index: 99;
 	&:hover {
-		color: #1a1919;
+		transition: color 0.5s ease-in-out;
+		color: ${(prop) => prop.theme.mainFont};
 	}
 `;

@@ -1,15 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { AiOutlineCloseSquare } from 'react-icons/ai';
 const Message = ['Email sent', 'Updated', 'Password Changed'];
 
 const ErrorMessage = ({ state }) => {
 	const [message, setMessage] = state;
+	useEffect(() => {
+		setTimeout(() => {
+			setMessage();
+		}, [3000]);
+		return () => {
+			clearInterval();
+		};
+	}, [setMessage]);
 	return (
 		<>
 			<ErrorContainer onClick={() => setMessage()} message={message}>
 				<p>{message}</p>
-				<Close size={24} style={{ color: '#ffffff' }} />
+				<Close size={25} style={{ color: '#ffffff' }} />
 			</ErrorContainer>
 		</>
 	);
@@ -35,12 +43,13 @@ const ErrorContainer = styled.div`
 	align-items: center;
 	justify-content: space-around;
 	border-radius: 5px;
-	position: fixed;
+	position: absolute;
 	top: calc(5% + 50px);
 	right: 0%;
 	padding: 5px;
 	cursor: pointer;
 	animation: 0.8s ${MoveIn} cubic-bezier(0.51, 0.92, 0.24, 1.15);
+	z-index: 10;
 
 	p {
 		color: #ffffff;

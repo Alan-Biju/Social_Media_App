@@ -17,7 +17,7 @@ const Verify = () => {
 		e.preventDefault();
 		try {
 			await VerifyMail();
-			setMessage('Email sent')
+			setMessage('Email sent');
 		} catch (e) {
 			setMessage(e.message);
 		}
@@ -128,5 +128,9 @@ const Button = styled.button`
 	font-weight: 600;
 	&:hover {
 		background: #368ad8;
+	}
+	&:disabled {
+		background-color: #918b8b;
+		cursor: not-allowed;
 	}
 `;
