@@ -125,15 +125,15 @@ const IconGroup = styled.div`
 	align-items: center;
 	justify-content: space-around;
 `;
-const Pulse = keyframes`
+const Pulse = (pluse) => keyframes`
  0% {	 
-	box-shadow:0 0 0 0 ${(prop) => prop.theme.pluseArea1};
+	box-shadow:0 0 0 0 ${pluse.pluseArea1};
   }
   70% {
-      box-shadow: 0 0 0 3px ${(prop) => prop.theme.pluseArea2};
+      box-shadow: 0 0 0 3px ${pluse.pluseArea2};
   }
   100% {
-      box-shadow: 0 0 0 0 ${(prop) => prop.theme.pluseArea3};
+      box-shadow: 0 0 0 0 ${pluse.pluseArea3};
   }
 `;
 const Icon = styled(NavLink)`
@@ -166,7 +166,7 @@ const Icon = styled(NavLink)`
 			bottom: -2px;
 			left: 50%;
 			transform: translate(-50%, -50%);
-			animation: ${Pulse} 2s infinite;
+			animation: ${(prop) => Pulse(prop.theme.pulseColor)} 2s infinite;
 		}
 	}
 `;
