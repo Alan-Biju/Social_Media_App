@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const LoadingIcon = () => {
 	return (
 		<>
-			<Icon type='bubbles'  height={30} width={80} />
+			<Icon type='bubbles' color={'#838282'} height={30} width={80} />
 		</>
 	);
 };
@@ -13,9 +13,8 @@ const LoadingIcon = () => {
 export default LoadingIcon;
 const Icon = styled(ReactLoading)`
 	position: absolute;
-	top: 45%;
+	top: 50%;
 	left: 50%;
 	transition: color 0.5s ease-in-out;
-	color: ${(prop) => prop.theme.loading};
 	transform: translate(-50%, -50%);
 `;
