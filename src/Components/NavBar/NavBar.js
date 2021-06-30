@@ -92,7 +92,7 @@ const SideIcons = styled.div`
 	position: absolute;
 	top: 0;
 	transition: background-color 0.5s ease-in-out;
-	background-color: ${(prop) => prop.theme.postBG};
+	background-color: ${(prop) => prop.theme.navBG};
 	@media (max-width: 450px) {
 		position: static;
 		position: sticky;
@@ -106,7 +106,7 @@ const Header = styled.header`
 	align-items: center;
 	justify-content: center;
 	transition: background-color 0.5s ease-in-out;
-	background-color: ${(prop) => prop.theme.postBG};
+	background-color: ${(prop) => prop.theme.navBG};
 	box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 	z-index: 9;
 	user-select: none;
@@ -150,11 +150,11 @@ const Icon = styled(NavLink)`
 	user-select: none;
 	&:hover {
 		transition: color 0.5s ease-in-out;
-		color: ${(prop) => prop.theme.mainFont};
+		color: ${(prop) => prop.theme.iconColor};
 	}
 	&.active {
 		transition: color 0.5s ease-in-out;
-		color: ${(prop) => prop.theme.mainFont};
+		color: ${(prop) => prop.theme.iconColor};
 		&::after {
 			content: ' ';
 			transition: background-color 0.5s ease-in-out;
