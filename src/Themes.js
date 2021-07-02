@@ -14,9 +14,9 @@ export const lightTheme = {
 	loading: '#3a3a3a',
 };
 export const darkTheme = {
-	mainBackground: '#161414',
-	postBG: '#1f1c1c',
-	navBG: '#1f1c1c',
+	mainBackground: '#0D1117',
+	postBG: '#161B22',
+	navBG: '#161B22',
 	iconColor: '#f6f6f6',
 	mainFont: '#eeeaea',
 	greyFont: '#adaaaa',
