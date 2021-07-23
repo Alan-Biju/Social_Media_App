@@ -2,9 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import { FiHeart, FiBookmark, FiHash } from 'react-icons/fi';
 import { FaRegComment } from 'react-icons/fa';
+import { BiChevronsRight } from 'react-icons/bi';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import Badge from '../../Reusable/Badge';
+import { Link } from 'react-router-dom';
 const Posts = ({ Data }) => {
 	let t = new Date(1970, 0, 1);
 	t.setSeconds(Data.Datetime);
@@ -42,7 +44,9 @@ const Posts = ({ Data }) => {
 				<IconSection>
 					<IconLeft>
 						<Heart />
-						<FaRegComment />
+						<Links to={`/Details/${Data.userId}/${Data.id}`}>
+							<FaRegComment />
+						</Links>
 					</IconLeft>
 					<IconRight>
 						<FiBookmark />
@@ -55,7 +59,9 @@ const Posts = ({ Data }) => {
 						</span>
 						{Data.caption}
 					</h1>
-					<p>more...</p>
+					<Links to={`/Details/${Data.userId}/${Data.id}`}>
+						<h1>more</h1> <BiChevronsRight />
+					</Links>
 				</TextSection>
 			</PostContainer>
 		</>
@@ -150,18 +156,23 @@ const TextSection = styled.div`
 	align-items: center;
 	justify-content: space-between;
 	padding: 0 10px;
-	font-family: 'Manrope', sans-serif;
-	transition: color 0.5s ease-in-out;
 	color: ${(prop) => prop.theme.mainFont};
-
 	h1 {
 		font-size: 0.7rem;
 		font-weight: 600;
 		letter-spacing: 1px;
 		text-transform: capitalize;
 	}
-	p {
-		font-size: 0.6rem;
-		cursor: pointer;
-	}
+`;
+const Links = styled(Link)`
+	font-size: 1rem;
+	font-weight: 700;
+	cursor: pointer;
+	text-decoration: none;
+	color: ${(prop) => prop.theme.mainFont};
+	font-family: 'Manrope', sans-serif;
+	transition: color 0.5s ease-in-out;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 `;

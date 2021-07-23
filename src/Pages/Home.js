@@ -25,7 +25,7 @@ const Home = () => {
 };
 
 export default Home;
-export const HomeContainer = styled.div`
+export const HomeContainer = styled.main`
 	width: 100%;
 	height: calc(100% - 50px);
 	display: flex;

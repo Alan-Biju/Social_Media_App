@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const LoadingIcon = () => {
 	return (
 		<>
-			<Icon type='bubbles' color={'#838282'} height={30} width={80} />
+			<Icon type='bubbles' color={'#00fdfd'} height={30} width={80} />
 		</>
 	);
 };
